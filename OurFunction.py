@@ -2,7 +2,7 @@
 def appends(array, a): 
     newarr = [0 for i in range(len(array) + 1)]
     for i in range(lengthI(newarr)): 
-        if i != len(newarr) - 1:
+        if i != lengthI(newarr) - 1:
             newarr[i] = array[i]
         else: 
             newarr[i] = a
@@ -17,6 +17,8 @@ def pops(array, a):
     return newarr
 
 #pengganti fungsi len()
+
+#Length untuk semua type 
 def Length(array): 
     if isinstance(array,str) :
         array = list(array)
@@ -79,6 +81,3 @@ def splits(arr, b):
     else: 
         return arr
 
-
-arr = "Daspro"
-print(Length(arr))
