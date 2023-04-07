@@ -29,9 +29,7 @@ def Login():
         print("username tidak terdaftar")
     else:
         if login_status == False: 
-            print("Password salah")
+            print("Password salah!")
         else: 
-            print("Anda benar")
+            print(f"Selamat datang {username}")
             return role
-
-

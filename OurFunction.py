@@ -28,7 +28,6 @@ def Length(array):
         i+= 1
         if arrays == array: 
             status = False
-      
     return i
 
 #pengganti fungsi sort 
