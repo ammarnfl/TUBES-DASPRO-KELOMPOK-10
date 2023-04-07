@@ -1,11 +1,11 @@
 import csv 
-from OurList import *
+from OurFunction import *
 
 login_status = False
-role_status = False
 not_found = False
 f = open('user.csv', 'r+')
 reader = csv.reader(f, delimiter=";")
+
 
 username = input("Username: ")
 password = input("Password: ")
