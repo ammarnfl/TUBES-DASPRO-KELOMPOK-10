@@ -17,13 +17,13 @@ for row in reader:
     if row[0] == username and row[1] == password: 
             login_status = True
 
-for i in length(username_check): 
-    if username == username_check[i]: 
+checker = False
+for i in range(lengthI(username_check)): 
+    if username == username_check[i] and checker == False: 
         not_found = False
-        break
-    else: 
+        checker = True
+    elif checker == False: 
         not_found = True
-
 
 if not_found == True: 
     print("username tidak terdaftar")
