@@ -48,8 +48,6 @@ def splits(arr, b):
     else: 
         return arr
 
-cars = "BMWTelsaRangeRover" 
-print(splits(cars, '-'))
 
 
 
