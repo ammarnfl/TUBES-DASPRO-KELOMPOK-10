@@ -17,12 +17,12 @@ for row in reader:
     if row[0] == username and row[1] == password: 
             login_status = True
 
-checker = False
-for i in range(lengthI(username_check)): 
-    if username == username_check[i] and checker == False: 
+
+for i in range(Length(username_check)): 
+    if username == username_check[i] : 
         not_found = False
-        checker = True
-    elif checker == False: 
+        break
+    else: 
         not_found = True
 
 if not_found == True: 

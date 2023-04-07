@@ -1,7 +1,7 @@
 #pengganti fungsi append()
 def appends(array, a): 
     newarr = [0 for i in range(len(array) + 1)]
-    for i in range(lengthI(newarr)): 
+    for i in range(Length(newarr)): 
         if i != len(newarr) - 1:
             newarr[i] = array[i]
         else: 
@@ -11,7 +11,7 @@ def appends(array, a):
 #pengganti fungsi pop()
 def pops(array, a): 
     newarr = []
-    for i in range(lengthI(array)): 
+    for i in range(Length(array)): 
         if i != a: 
             newarr = appends(newarr, array[i])
     return newarr
@@ -30,34 +30,11 @@ def Length(array):
             status = False
       
     return i
-# length untuk Integer
-def lengthI(array): 
-    arrays = []
-    status = True
-    i = 0
-    while status == True: 
-        arrays = appends(arrays, array[i])
-        i += 1
-        if arrays == array: 
-            status = False
-    return i
-
-# length untuk Array
-def lengthS(string): 
-    stringS = ""
-    status = True
-    i = 0
-    while status: 
-        stringS += string[i]
-        i += 1
-        if stringS == string: 
-            status = False
-    return i
 
 #pengganti fungsi sort 
 def sorts(array): 
-    for i in range(lengthI(array)): 
-        for j in range(0, lengthI(array)-i-1): 
+    for i in range(Length(array)): 
+        for j in range(0, Length(array)-i-1): 
             if array[j] > array[j+1]: 
                 array[j], array[j+1] = array[j+1], array[j]
     return array
@@ -67,7 +44,7 @@ def splits(arr, b):
     newarr = []
     bruh = newarr
     a = ""
-    for i in range(lengthS(arr)): 
+    for i in range(Length(arr)): 
         if arr[i] == b: 
             newarr = appends(newarr, a)
             a = ""
@@ -79,6 +56,3 @@ def splits(arr, b):
     else: 
         return arr
 
-
-arr = "Daspro"
-print(Length(arr))
