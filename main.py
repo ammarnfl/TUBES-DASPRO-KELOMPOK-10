@@ -1,9 +1,4 @@
 #Program utama ada disini
-<<<<<<< Updated upstream
-import login 
-
-login()
-=======
 from F01_Login import Login
 from F02_Logout import Logout
 from helps import *
