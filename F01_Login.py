@@ -40,5 +40,3 @@ def Login():
         else: 
             print(f"Selamat datang {username}")
             return role
-
-Login()
