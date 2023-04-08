@@ -1,27 +1,27 @@
 #pengganti fungsi append()
-def appends(array, a): 
-    newarr = [0 for i in range(len(array) + 1)]
-    for i in range(Length(newarr)): 
-        if i != len(newarr) - 1:
+def appends(array, a, Length): 
+    newarr = [0 for i in range(Length + 1)]
+    for i in range(Length + 1): 
+        if i != Length:
             newarr[i] = array[i]
         else: 
             newarr[i] = a
     return newarr
 
+
 #pengganti fungsi pop()
-def pops(array, a): 
+def pops(array, a, Length): 
     newarr = []
-    for i in range(Length(array)): 
+    for i in range(Length): 
         if i != a: 
-            newarr = appends(newarr, array[i])
+            newarr = appends(newarr, array[i], Length)
     return newarr
 
 #pengganti fungsi len()
-def Length(array): 
-    if isinstance(array,str) :
-        array = list(array)
-    arrays = []
+def Len(array):
+    stringS = ""
     i = 0
+<<<<<<< Updated upstream
     status = True
     while status == True :
         arrays += [array[i]]
@@ -30,27 +30,35 @@ def Length(array):
             status = False
       
     return i
+=======
+    while True: 
+        stringS += array[i]
+        i += 1
+        if stringS == array: 
+            break
+    return i 
+>>>>>>> Stashed changes
 
 #pengganti fungsi sort 
-def sorts(array): 
-    for i in range(Length(array)): 
-        for j in range(0, Length(array)-i-1): 
+def sorts(array, Length): 
+    for i in range(Length): 
+        for j in range(0, Length-i-1): 
             if array[j] > array[j+1]: 
                 array[j], array[j+1] = array[j+1], array[j]
     return array
 
 #pengganti fungsi split()
-def splits(arr, b): 
+def splits(arr, b, Length): 
     newarr = []
     bruh = newarr
     a = ""
-    for i in range(Length(arr)): 
+    for i in range(Length): 
         if arr[i] == b: 
             newarr = appends(newarr, a)
             a = ""
         else: 
             a += arr[i]
-    newarr = appends(newarr, a)
+    newarr = appends(newarr, a, Length)
     if bruh == newarr:
         return newarr
     else: 
