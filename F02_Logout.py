@@ -1,2 +1,2 @@
-def logout(): 
+def Logout(): 
     return ""

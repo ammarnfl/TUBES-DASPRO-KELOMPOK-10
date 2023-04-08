@@ -2,15 +2,11 @@ import csv
 from OurFunction import *
 
 
-def Login():
+def Login(username, password):
     login_status = False
     not_found = False
     f = open('user.csv', 'r+')
     reader = csv.reader(f, delimiter=";")
-
-    username = input("Username: ")
-    password = input("Password: ")
-    
     #check username ada atau tidak
     username_check = []
     Len_username_check = 0
@@ -40,3 +36,4 @@ def Login():
         else: 
             print(f"Selamat datang {username}")
             return role
+

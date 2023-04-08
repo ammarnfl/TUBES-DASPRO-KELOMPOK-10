@@ -3,18 +3,23 @@ from F01_Login import Login
 from F02_Logout import Logout
 from helps import *
 
-
 role = ""
 while True: 
     masukkan = input(">>> ")
-    if masukkan == "login" and role == "": 
+    if masukkan == "login": 
+        print(role)
+        if role != "": 
+            print(f"Login gagal!\nAnda telah melakukan login dengan username {Username}, silahkan 'logout'")
+            print("Sebelum melakukan login kembali")
         while role =="":
-            role = Login()
+            Username = input("username: ")
+            Password = input("Password: ")
+            role = Login(Username, Password)
     elif masukkan == "logout": 
         if role != "":
             role = Logout()
         else: 
-            print("Anda belum login")
+            print("Login gagal!\nAnda belum login, silahkan login terlebih dahulu sebelum melakukan logout")
         
     elif role == "jin_pembangun" and masukkan == "bagun": 
         print()
