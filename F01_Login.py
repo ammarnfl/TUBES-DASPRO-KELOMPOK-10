@@ -4,7 +4,7 @@ from OurFunction import *
 
 def Login(username, password):
     login_status = False
-    not_found = False
+    not_found = True
     f = open('user.csv', 'r+')
     reader = csv.reader(f, delimiter=";")
     #check username ada atau tidak
@@ -13,16 +13,14 @@ def Login(username, password):
     for row in reader: 
         Len_username_check += 1
         username_check = appends(username_check,row[0], Len_username_check-1)
-        if row[0] == username and row[1] == password: 
+        if row[0] == username: 
+            if row[1] == password: 
                 login_status = True
+                not_found = False
                 role = row[2]
-
-    for i in range(Len_username_check): 
-        if username == username_check[i] : 
-            not_found = False
-            break
-        else: 
-            not_found = True
+            else: 
+                login_status = False
+                not_found = False
 
     if not_found == True: 
         print("username tidak terdaftar")

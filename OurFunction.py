@@ -21,11 +21,12 @@ def pops(array, a, Length):
 def Len(array):
     stringS = ""
     i = 0
-    while True: 
+    status = True
+    while status: 
         stringS += array[i]
         i += 1
         if stringS == array: 
-            break
+            status = False
     return i 
 
 #pengganti fungsi sort 
