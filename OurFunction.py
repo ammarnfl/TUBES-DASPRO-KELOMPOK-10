@@ -8,7 +8,6 @@ def appends(array, a, Length):
             newarr[i] = a
     return newarr
 
-
 #pengganti fungsi pop()
 def pops(array, a, Length): 
     newarr = []
@@ -44,7 +43,7 @@ def splits(arr, b, Length):
     a = ""
     for i in range(Length): 
         if arr[i] == b: 
-            newarr = appends(newarr, a)
+            newarr = appends(newarr, a, Length)
             a = ""
         else: 
             a += arr[i]

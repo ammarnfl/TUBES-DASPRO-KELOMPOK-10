@@ -3,8 +3,6 @@ from F01_Login import Login
 from F02_Logout import Logout
 from F03_SummonJin import *
 
-from helps import *
-
 def main():
     role = ""
     while True: 
@@ -35,7 +33,5 @@ def main():
             print()
         elif masukkan == "exit": 
             exit()
-
-    
 main()
 

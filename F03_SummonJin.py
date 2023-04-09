@@ -1,10 +1,7 @@
 import csv
 
 def Summonjin(): 
-    user_jin = ["", "", ""]
     f = open('user.csv', 'r+', newline='')
-    reader = csv.reader(f)
-    writer = csv.writer(f, delimiter=';')
     print("Jenis jin yang dapat dipanggil: ")
     print("(1) Pengumpul - Bertugas mengumpulkan bahan bangunan")
     print("(2) Pembangun - Bertugas membangun candi")
@@ -17,16 +14,11 @@ def Summonjin():
             username = input("Masukkan username jin: ")
 
             if check_username(username) == False: 
-                user_jin[0] = username
                 while True:
                     password = input("Masukkan password jin: ")
                     if check_password(password) == True: 
-                        user_jin[1] = password
-                        user_jin[2] = role
-                        for row in reader:
-                            if row: 
-                                writer.writerow(user_jin)
-                                break
+                        for line in f:
+                            f.write(f"{username};{password};{role}\n")
                         break
                     else:
                         print("Password panjangnya harus 5-25 karakter!")
@@ -40,26 +32,21 @@ def Summonjin():
             print("memilih jin pembangun.")
             username = input("Masukkan username jin: ")
             if check_username(username) == False: 
-                user_jin[0] = username
                 while True:
                     password = input("Masukkan password jin: ")
                     if check_password(password) == True: 
-                        user_jin[1] = password
-                        user_jin[2] = role
-                        for row in reader:
-                            if row: 
-                                writer.writerow(user_jin)
-                                break
+                        for line in f:
+                            f.write(f"{username};{password};{role}")
                         break
                     else:
                         print("Password panjangnya harus 5-25 karakter!")
                 break 
             else: 
                 print(f"username {username} sudah diambil")
-
             break
         else: 
             print(f"tidak ada jenis jin bernomor {jin}!")
+    f.close()
         
 def check_username(username): 
     f = open('user.csv', 'r+')
@@ -69,6 +56,7 @@ def check_username(username):
         if row[0] == username: 
             f.close()
             return True
+
     f.close()
     return False
 
@@ -77,3 +65,13 @@ def check_password(password):
     if len(password) >= 5 and len(password) <= 25: 
         return True
     return False
+
+def summoned_jin(): 
+    count = 0
+    f = open('user.csv', 'r+')
+    for line in f: 
+        count += 1
+    countjin = count - 3
+    return countjin
+
+Summonjin()
