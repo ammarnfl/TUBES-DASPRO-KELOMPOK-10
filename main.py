@@ -1,6 +1,7 @@
 #Program utama ada disini
 from F01_Login import Login
 from F02_Logout import Logout
+from F03_SummonJin import *
 
 from helps import *
 
@@ -21,7 +22,9 @@ def main():
             if role != "":
                 role = Logout()
             else: 
-                print("Login gagal!\nAnda belum login, silahkan login terlebih dahulu sebelum melakukan logout")        
+                print("Login gagal!\nAnda belum login, silahkan login terlebih dahulu sebelum melakukan logout")   
+        elif role == "bandung_bondowoso" and masukkan == "summonjin": 
+            Summonjin()
         elif role == "jin_pembangun" and masukkan == "bangun": 
             print()
         elif role == "jin_pengumpul" and masukkan == "kumpul":

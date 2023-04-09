@@ -7,12 +7,8 @@ def Login(username, password):
     not_found = True
     f = open('user.csv', 'r+')
     reader = csv.reader(f, delimiter=";")
-    #check username ada atau tidak
-    username_check = []
-    Len_username_check = 0
+    #check username dan password ada atau tidak
     for row in reader: 
-        Len_username_check += 1
-        username_check = appends(username_check,row[0], Len_username_check-1)
         if row[0] == username: 
             if row[1] == password: 
                 login_status = True
@@ -21,7 +17,7 @@ def Login(username, password):
             else: 
                 login_status = False
                 not_found = False
-
+    #Aksi setelah username atau password ditemukan keduanya, salah satu, atau tidak sama sekali
     if not_found == True: 
         print("username tidak terdaftar")
         role = ""
@@ -34,4 +30,3 @@ def Login(username, password):
         else: 
             print(f"Selamat datang {username}")
             return role
-
