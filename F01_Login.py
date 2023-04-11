@@ -3,6 +3,12 @@ from OurFunction import *
 from Z1_ListFunction import *
 
 def Login(username : str, password : str, array_of_user : list) -> str:
+    #kondisi telah login
+    if login_status == True:
+        print("Login gagal!")
+        print(f'Anda telah login dengan username {array_of_user[i][0]}, silahkan lakukan "logout" sebelum melakukan login kembali.')
+        return login_status
+
     login_status = False
     #check username 
     i = 0 
@@ -16,7 +22,7 @@ def Login(username : str, password : str, array_of_user : list) -> str:
                 login_status = False
         i += 1
     if array_of_user[i] == Mark: 
-        print("username tidak terdaftar")
+        print("Username tidak terdaftar!")
         role = ""
         return role
     else:
@@ -25,7 +31,8 @@ def Login(username : str, password : str, array_of_user : list) -> str:
             role = ""
             return role
         else: 
-            print(f"Selamat datang {username}")
+            print(f"Selamat datang, {username}")
+            print('Masukkan command "help" untuk daftar command yang dapat kamu panggil')
             return role
         
     """#check username dan password ada atau tidak
