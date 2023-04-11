@@ -73,4 +73,3 @@ def summoned_jin():
     countjin = count - 3
     return countjin
 
-Summonjin()
