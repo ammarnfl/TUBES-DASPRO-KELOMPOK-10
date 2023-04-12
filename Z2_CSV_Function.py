@@ -14,6 +14,7 @@ def split_csv(line: str) -> list:
         Appened_Array = Appends(Appened_Array, string)
     return Appened_Array
 
+
 def matriks_csv(arr : list, list_item) -> list: 
     arr[0] = Mark
     for item in list_item: 
@@ -21,7 +22,6 @@ def matriks_csv(arr : list, list_item) -> list:
         arr = Appends(arr, array_eff_None(temp))
     arr = array_eff_None(arr)
     return arr
-
 
 ## penggunaan split 
     """array = [None for i in range(Neff)]

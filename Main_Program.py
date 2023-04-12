@@ -22,7 +22,7 @@ def Main_Program():
             if role != "": 
                 print(f"Login gagal!\nAnda telah melakukan login dengan username {Username}, silahkan 'logout'")
                 print("Sebelum melakukan login kembali")
-            while role =="":
+            while role == "":
                 Username = input("username: ")
                 Password = input("Password: ")
                 role = Login(Username, Password, users)
@@ -43,6 +43,5 @@ def Main_Program():
             print()
         elif masukkan == "exit": 
             exit()
-
 Main_Program()
 

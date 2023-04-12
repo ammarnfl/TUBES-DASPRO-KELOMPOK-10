@@ -1,5 +1,3 @@
-import csv
-
 def Summonjin(): 
     f = open('user.csv', 'r+', newline='')
     print("Jenis jin yang dapat dipanggil: ")
@@ -26,7 +24,7 @@ def Summonjin():
                 break 
             else: 
                 print(f"username {username} sudah diambil")
-            
+                      
         #jin pembangun
         elif jin == 2: 
             role = "jin_pembangun"

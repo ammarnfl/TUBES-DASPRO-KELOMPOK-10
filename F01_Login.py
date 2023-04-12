@@ -2,13 +2,9 @@ import csv
 from OurFunction import *
 from Z1_ListFunction import *
 
-def Login(username : str, password : str, array_of_user : list) -> str:
-    #kondisi telah login
-    if login_status == True:
-        print("Login gagal!")
-        print(f'Anda telah login dengan username {array_of_user[i][0]}, silahkan lakukan "logout" sebelum melakukan login kembali.')
-        return login_status
 
+def Login(username : str, password : str, array_of_user : list) -> str:
+    global login_status
     login_status = False
     #check username 
     i = 0 
@@ -20,6 +16,7 @@ def Login(username : str, password : str, array_of_user : list) -> str:
                 break
             else: 
                 login_status = False
+                break
         i += 1
     if array_of_user[i] == Mark: 
         print("Username tidak terdaftar!")
@@ -34,7 +31,7 @@ def Login(username : str, password : str, array_of_user : list) -> str:
             print(f"Selamat datang, {username}")
             print('Masukkan command "help" untuk daftar command yang dapat kamu panggil')
             return role
-        
+
     """#check username dan password ada atau tidak
     for row in reader: 
         if row[0] == username: 
@@ -58,3 +55,6 @@ def Login(username : str, password : str, array_of_user : list) -> str:
         else: 
             print(f"Selamat datang {username}")
             return role"""
+
+def Login_status(): 
+    return login_status

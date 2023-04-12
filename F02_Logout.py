@@ -1,7 +1,8 @@
-from F01_Login import Login
+from F01_Login import *
+
 
 def Logout(): 
-    if Login == True:
+    if Login_status() == True:
         return ""
     else:
         print("Logout gagal!")
