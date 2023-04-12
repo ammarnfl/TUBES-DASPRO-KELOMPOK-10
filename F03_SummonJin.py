@@ -57,10 +57,6 @@ def check_password(password : str) -> bool:
         return True
     return False
 
-def summoned_jin(): 
-    count = 0
-    f = open('user.csv', 'r+')
-    for line in f: 
-        count += 1
-    countjin = count - 3
+def summoned_jin(arr): 
+    countjin = Len(arr) - 3
     return countjin

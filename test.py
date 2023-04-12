@@ -1,22 +1,7 @@
 from Z2_CSV_Function import *
-from os import *
-f = open('user.csv', 'r+')
-a = f.readlines()
-f.close 
+from Z1_ListFunction import *
+from F14_Save import *
 
-g = [None for i in range(Neff)]
-g = matriks_csv(a)
-print(g)
-
-username = input()
-i = 0
-while g[i]!= Mark: 
-    print(g[i])
-    if g[i][0] == username: 
-        print("ketemu")
-        break
-    i += 1
-if Marking(g[i]) == True: 
-    print("ga ketemu")
-
-print(path.exist("data"))
+a = [['123', '234', 'waduh', Mark], Mark]
+diles = input()
+save(diles, a, 'waduh.csv')

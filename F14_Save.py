@@ -10,7 +10,7 @@ def save(path : str,  arr : list, namefile: str):
         i = 0
         while arr[i] != Mark:
             j = 0
-            while arr[j] != Mark:
+            while arr[i][j] != Mark:
                 if arr[i][j+1] == Mark:
                     f.write(f"{arr[i][j]}")
                     break
@@ -27,11 +27,12 @@ def save(path : str,  arr : list, namefile: str):
         f = open(os.path.join(path, namefile), 'w')
         while arr[i] != Mark: 
             j = 0
-            while arr[j] != Mark:
+            while arr[i][j] != Mark:
                 if arr[i][j+1] == Mark:
                     f.write(f"{arr[i][j]}")
                     break
                 f.write(f"{arr[i][j]};")
                 j += 1
             f.write("\n")
+            i += 1
         f.close()
