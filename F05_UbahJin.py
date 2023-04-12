@@ -4,8 +4,6 @@ from Z1_ListFunction import *
 
 
 
-
-
 # cek username ada atau tidak
 #username_check = []
 # checker = False

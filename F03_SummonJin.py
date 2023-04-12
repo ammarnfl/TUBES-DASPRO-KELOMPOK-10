@@ -1,5 +1,6 @@
-def Summonjin(): 
-    f = open('user.csv', 'r+', newline='')
+from Z1_ListFunction import *
+
+def Summonjin(array_of_user : list) -> list: 
     print("Jenis jin yang dapat dipanggil: ")
     print("(1) Pengumpul - Bertugas mengumpulkan bahan bangunan")
     print("(2) Pembangun - Bertugas membangun candi")
@@ -11,13 +12,11 @@ def Summonjin():
             print("memilih jin pengumpul.")
             username = input("Masukkan username jin: ")
 
-            if check_username(username) == False: 
+            if isUsernameExist(username, array_of_user) == False: 
                 while True:
                     password = input("Masukkan password jin: ")
                     if check_password(password) == True: 
-                        for line in f:
-                            f.write(f"{username};{password};{role}\n")
-                        f.close()
+                        array_of_user = Appends(array_of_user, [username, password, role, Mark])
                         break
                     else:
                         print("Password panjangnya harus 5-25 karakter!")
@@ -30,13 +29,11 @@ def Summonjin():
             role = "jin_pembangun"
             print("memilih jin pembangun.")
             username = input("Masukkan username jin: ")
-            if check_username(username) == False: 
+            if isUsernameExist(username, array_of_user) == False: 
                 while True:
                     password = input("Masukkan password jin: ")
                     if check_password(password) == True: 
-                        for line in f:
-                            f.write(f"{username};{password};{role}\n")
-                        f.close()
+                        array_of_user = Appends(array_of_user, [username, password, role, Mark])
                         break
                     else:
                         print("Password panjangnya harus 5-25 karakter!")
@@ -46,19 +43,16 @@ def Summonjin():
             break
         else: 
             print(f"tidak ada jenis jin bernomor {jin}!")
-    f.close()
         
-def check_username(username): 
-    f = open('user.csv', 'r+')
-    reader = csv.reader(f, delimiter =';')
-    for row in reader: 
-        if row[0] == username: 
-            f.close()
+def isUsernameExist(username : str, array_of_user : list) -> bool: 
+    i = 0
+    while array_of_user[i] != Mark: 
+        if array_of_user[i][0] == username: 
             return True
-    f.close()
+        i += 1
     return False
 
-def check_password(password): 
+def check_password(password : str) -> bool: 
     if len(password) >= 5 and len(password) <= 25: 
         return True
     return False
@@ -70,4 +64,3 @@ def summoned_jin():
         count += 1
     countjin = count - 3
     return countjin
-

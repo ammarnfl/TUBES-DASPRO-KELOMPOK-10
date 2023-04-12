@@ -20,7 +20,6 @@ def matriks_csv(arr : list, list_item) -> list:
     for item in list_item: 
         temp = split_csv(item)
         arr = Appends(arr, array_eff_None(temp))
-    arr = array_eff_None(arr)
     return arr
 
 ## penggunaan split 

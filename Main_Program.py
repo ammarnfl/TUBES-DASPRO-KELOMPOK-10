@@ -9,6 +9,7 @@ from F13_Load import *
 from Z1_ListFunction import *
 from Z2_CSV_Function import *
 
+global users, candi
 users = [None for i in range(Neff)]
 candi = [None for i in range(Neff)]
 
@@ -32,7 +33,7 @@ def Main_Program():
             else: 
                 print("Login gagal!\nAnda belum login, silahkan login terlebih dahulu sebelum melakukan logout")   
         elif role == "bandung_bondowoso" and masukkan == "summonjin": 
-            Summonjin()
+            Summonjin(users)
         elif role == "jin_pembangun" and masukkan == "bangun": 
             print()
         elif role == "jin_pengumpul" and masukkan == "kumpul":
@@ -43,5 +44,7 @@ def Main_Program():
             print()
         elif masukkan == "exit": 
             exit()
+        elif masukkan == "user": 
+            print(users)
 Main_Program()
 
