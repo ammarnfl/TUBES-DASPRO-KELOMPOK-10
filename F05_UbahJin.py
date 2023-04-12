@@ -2,43 +2,41 @@ import csv
 from OurFunction import *
 from Z1_ListFunction import *
 
-
-
-# cek username ada atau tidak
-#username_check = []
-# checker = False
-# for row in range(lengthI(username_check)):
-#    if username == username_check[row] and checker == False:
-#        not_found = False
-#        checker = True
-#    elif checker == False:
-#        not_found = True
-
-#if not_found == True:
-#    print("Tidak ada jin dengan username tersebut.")
-#else:
-#    type_checker = 
-
-
-def ubah_jin():
-    f = open('user.csv', 'r+')
+def ubah_jin(array_of_user : list):
+    isUsernameExist = False
     username = input("Masukkkan username Jin: ")
-    while True:
-        #cek tipe rolenya?
-        type_role = "Pengumpul" # cara cek tipe rolenya masih bingung
-        if type_role == "Pengumpul":
-            YN = input("Jin ini bertipe" "Pengumpul." "Yakin ingin mengubah ke tipe " "Pembangun" "(Y/N)? ")
-        else:
-            YN = input("Jin ini bertipe" "Pembangun." "Yakin ingin mengubah ke tipe " "Pengumpul" "(Y/N)? ")
-    f.close()
 
-# check_username harus update pake parser
-def check_username(username): 
-    f = open('user.csv', 'r+')
-    reader = csv.reader(f, delimiter =';')
-    for row in reader: 
-        if row[0] == username: 
-            f.close()
-            return True
-    f.close()
-    return False
+    #check username ada atau tidak 
+    i = 0 
+    while array_of_user[i] != Mark: 
+        if array_of_user[i][0] == username: 
+            role = array_of_user[i][2]
+            isUsernameExist = True
+            break
+        i += 1
+    if array_of_user[i] == Mark:
+        isUsernameExist = False
+
+    #kondisi jika username ditemukan atau tidak
+    tipe = ""
+    tipe_opposite = ""
+    #kondisi jika username ada atau tidak
+    if isUsernameExist == True: 
+        if role == "jin_pembangun": 
+            tipe = "Pembangun"
+            tipe_opposite = "Pengumpul"
+        elif role == "jin_pengumpul": 
+            tipe = "Pengumpul"
+            tipe_opposite = "Pembangun"
+        #menentukan tipe jin diubah atau tidak
+        choice = input(f"Jin ini bertipe {tipe}. Yakin ingin mengubah ke tipe {tipe_opposite} (Y/N)? ")
+        #mengubah role dari jin_pembangun ke jin_pengumpul
+        if choice == 'Y' and tipe == "Pembangun": 
+            role = "jin_pengumpul"
+        #mengubah role dari jin_pengumpul ke jin_pengumpul
+        if choice == 'Y' and tipe == "Pengumpul":
+            role = "jin_pembangun"
+        array_of_user [i][2] = role
+    else: 
+        print("Tidak ada jin dengan username tersebut")
+        return array_of_user

@@ -6,6 +6,8 @@ from os import *
 from F01_Login import *
 from F02_Logout import *
 from F03_SummonJin import *
+
+from F05_UbahJin import *
 from F13_Load import *
 from F14_Save import *
 from Z1_ListFunction import *
@@ -54,6 +56,12 @@ if(os.path.isdir(args.nama_folder) == True):
 
         elif role == "bandung_bondowoso" and masukkan == "summonjin": 
             Summonjin(users)
+        elif role == "bandung_bondowoso" and masukkan == "hapusjin": 
+            break
+        elif role == "bandung_bondowoso" and masukkan == "ubahjin": 
+            ubah_jin(users)
+
+
         elif role == "jin_pembangun" and masukkan == "bangun": 
             print()
         elif role == "jin_pengumpul" and masukkan == "kumpul":
