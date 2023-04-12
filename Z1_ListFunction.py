@@ -50,7 +50,3 @@ def array_eff_None(list : list, i : int = 0) -> list:
     arr = Appends(arr, item)
     print(arr)
     """
-
-arr = [[1,2,2,],[1,2,2,3],[1,2,2,3],-9999, None, None, None]
-arr = Appends(arr, [1,2,3,4,5,53,4])
-print(arr)
