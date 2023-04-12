@@ -7,12 +7,15 @@ from F01_Login import *
 from F02_Logout import *
 from F03_SummonJin import *
 from F13_Load import *
+from F14_Save import *
 from Z1_ListFunction import *
 from Z2_CSV_Function import *
+
 
 #inisiasi array sebagai tempat penyimpanan untuk data dari csv
 users = [None for i in range(Neff)]
 candi = [None for i in range(Neff)]
+bahan_bangunan = [None for i in range(Neff)]
 
 #argparser untuk mengecek folder ada atau tidak 
 parser = argparse.ArgumentParser()
@@ -21,8 +24,10 @@ args = parser.parse_args()
 
 #load : mengambil data dari csv
 load(args.nama_folder, 'user.csv', users)
-
-
+print(users)
+#load(args.nama_folder, 'candi.csv', candi)
+#load(args.nama_folder, 'bahan_bangunan.csv', bahan_bangunan)
+data_for_saving = [users, candi, bahan_bangunan, Mark]
 if(os.path.isdir(args.nama_folder) == True): 
     print('Selamat datang di program "Manajerial candi"')
     print("Silahkan masukkan username anda")
@@ -55,6 +60,9 @@ if(os.path.isdir(args.nama_folder) == True):
             print()
         elif masukkan == "help": 
             print()
+        elif masukkan == "save" and role != "": 
+            folder = input("Masukkan nama folder: ")
+            save(folder, users, 'user.csv')
         elif masukkan == "exit": 
             exit()
         elif masukkan == "user": 
