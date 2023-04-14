@@ -22,7 +22,6 @@ def save(path : str,  arr : list, namefile: str):
         f.close()
 
     else:
-        print("ada foldernya") 
         f =  open(os.path.join(path, namefile), 'w')
         f.close()
         i = 0

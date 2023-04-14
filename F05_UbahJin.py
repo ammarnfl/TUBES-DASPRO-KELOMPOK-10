@@ -17,7 +17,6 @@ def ubah_jin(array_of_user : list):
         isUsernameExist = False
 
     #kondisi jika username ditemukan atau tidak
-
     tipe = ""
     tipe_opposite = ""
     #kondisi jika username ada atau tidak

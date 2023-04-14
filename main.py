@@ -8,6 +8,8 @@ from F02_Logout import *
 from F03_SummonJin import *
 from F04_HapusJin import *
 from F05_UbahJin import *
+from F06_JinPembangun import *
+from F07_JinPengumpul import *
 from F13_Load import *
 from F14_Save import *
 from Z1_ListFunction import *
@@ -28,8 +30,10 @@ args = parser.parse_args()
 #load : mengambil data dari csv
 load(args.nama_folder, 'user.csv', users)
 load(args.nama_folder, 'candi.csv', candi)
-print(candi)
-#load(args.nama_folder, 'bahan_bangunan.csv', bahan_bangunan)
+load(args.nama_folder, 'bahan_bangunan.csv', bahan_bangunan)
+
+
+
 if(os.path.isdir(args.nama_folder) == True): 
     print(array_eff_None(users))
     print('Selamat datang di program "Manajerial candi"')
@@ -66,9 +70,10 @@ if(os.path.isdir(args.nama_folder) == True):
             ubah_jin(users)
         
         elif role == "jin_pembangun" and masukkan == "bangun": 
-            print()
+            Jin_Pembangun(candi, bahan_bangunan, Username)
         elif role == "jin_pengumpul" and masukkan == "kumpul":
-            print()
+            bahan_bangunan, pasir, batu, air = CollectMaterial(bahan_bangunan)
+            print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
         elif role == "roro_jonggrang":
             print()
         elif masukkan == "help": 
@@ -76,10 +81,16 @@ if(os.path.isdir(args.nama_folder) == True):
         elif masukkan == "save" and role != "": 
             folder = input("Masukkan nama folder: ")
             save(folder, users, 'user.csv')
+            save(folder, candi, 'candi.csv')
+            save(folder, bahan_bangunan, 'bahan_bangunan.csv')
         elif masukkan == "exit": 
             exit()
         elif masukkan == "user": 
             print(array_eff_None(users))
+        elif masukkan == "bahan": 
+            print(array_eff_None(bahan_bangunan))
+        elif masukkan == "candi":
+            print(array_eff_None(candi))
 
 elif(os.path.isdir(args.nama_folder) == False):
     print(f'Folder "{args.nama_folder}" tidak ditemukan.') 
