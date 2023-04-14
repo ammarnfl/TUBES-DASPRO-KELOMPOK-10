@@ -5,7 +5,6 @@ from Z1_ListFunction import *
 def ubah_jin(array_of_user : list):
     isUsernameExist = False
     username = input("Masukkkan username Jin: ")
-
     #check username ada atau tidak 
     i = 0 
     while array_of_user[i] != Mark: 
@@ -18,6 +17,7 @@ def ubah_jin(array_of_user : list):
         isUsernameExist = False
 
     #kondisi jika username ditemukan atau tidak
+
     tipe = ""
     tipe_opposite = ""
     #kondisi jika username ada atau tidak

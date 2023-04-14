@@ -27,7 +27,8 @@ args = parser.parse_args()
 
 #load : mengambil data dari csv
 load(args.nama_folder, 'user.csv', users)
-#load(args.nama_folder, 'candi.csv', candi)
+load(args.nama_folder, 'candi.csv', candi)
+print(candi)
 #load(args.nama_folder, 'bahan_bangunan.csv', bahan_bangunan)
 if(os.path.isdir(args.nama_folder) == True): 
     print(array_eff_None(users))
@@ -39,6 +40,7 @@ if(os.path.isdir(args.nama_folder) == True):
     role = ""
     while True: 
         masukkan = input(">>> ")
+        #fungsi login 
         if masukkan == "login": 
             if role != "": 
                 print(f"Login gagal!\nAnda telah melakukan login dengan username {Username}, silahkan 'logout'")
@@ -47,19 +49,22 @@ if(os.path.isdir(args.nama_folder) == True):
                 Username = input("username: ")
                 Password = input("Password: ")
                 role = Login(Username, Password, users)
-
+        #fungsi logout
         elif masukkan == "logout": 
             if role != "":
                 role = Logout()
             else: 
                 print("Login gagal!\nAnda belum login, silahkan login terlebih dahulu sebelum melakukan logout")   
-
+        #fungsi summonjin
         elif role == "bandung_bondowoso" and masukkan == "summonjin": 
             Summonjin(users)
+        #fungsi hapus jin
         elif role == "bandung_bondowoso" and masukkan == "hapusjin": 
-            users = HapusJin(users)
+            users, username_jin = HapusJin(users)
+        #fungsi ubah tipe jin
         elif role == "bandung_bondowoso" and masukkan == "ubahjin": 
             ubah_jin(users)
+        
         elif role == "jin_pembangun" and masukkan == "bangun": 
             print()
         elif role == "jin_pengumpul" and masukkan == "kumpul":
