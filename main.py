@@ -6,7 +6,7 @@ from os import *
 from F01_Login import *
 from F02_Logout import *
 from F03_SummonJin import *
-
+from F04_HapusJin import *
 from F05_UbahJin import *
 from F13_Load import *
 from F14_Save import *
@@ -27,10 +27,10 @@ args = parser.parse_args()
 
 #load : mengambil data dari csv
 load(args.nama_folder, 'user.csv', users)
-print(users)
 #load(args.nama_folder, 'candi.csv', candi)
 #load(args.nama_folder, 'bahan_bangunan.csv', bahan_bangunan)
 if(os.path.isdir(args.nama_folder) == True): 
+    print(array_eff_None(users))
     print('Selamat datang di program "Manajerial candi"')
     print("Silahkan masukkan username anda")
 
@@ -57,11 +57,9 @@ if(os.path.isdir(args.nama_folder) == True):
         elif role == "bandung_bondowoso" and masukkan == "summonjin": 
             Summonjin(users)
         elif role == "bandung_bondowoso" and masukkan == "hapusjin": 
-            break
+            users = HapusJin(users)
         elif role == "bandung_bondowoso" and masukkan == "ubahjin": 
             ubah_jin(users)
-
-
         elif role == "jin_pembangun" and masukkan == "bangun": 
             print()
         elif role == "jin_pengumpul" and masukkan == "kumpul":

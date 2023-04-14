@@ -3,6 +3,7 @@ from Z1_ListFunction import *
 
 def save(path : str,  arr : list, namefile: str):
     if not os.path.exists(path):
+        print("ga ada foldernya")
         os.makedirs(path)
         f = open(os.path.join(path, namefile), 'w')
         f.close()
@@ -20,7 +21,8 @@ def save(path : str,  arr : list, namefile: str):
             i += 1
         f.close()
 
-    else: 
+    else:
+        print("ada foldernya") 
         f =  open(os.path.join(path, namefile), 'w')
         f.close()
         i = 0

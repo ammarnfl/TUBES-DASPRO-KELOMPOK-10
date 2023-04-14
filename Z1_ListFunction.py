@@ -19,10 +19,33 @@ def Appends(array: list, b: str, i: int = 0) -> list:
             return array
         i += 1
 
+def get_element_matriks(array: list, b : str) -> int:
+    i = 0
+    while Marking(array[i]) == False: 
+        j = 0
+        while Marking(array[i][j]) == False: 
+            if array[i][j] == b: 
+                return i
+            j += 1
+        i+=1
+            
+def Remove(array : list , index : int) -> list: 
+    newarr = [None for i in range(Neff-1)]
+    newarr[0] == Mark
+    for i in range(Len(array)):
+        if i < index: 
+            newarr = Appends(newarr, array[i])
+        elif i > index: 
+            newarr[i-1] = Appends(newarr, array[i])
+        elif i == Len(array)-1: 
+            newarr[i] = Mark
+    return newarr
+
+
 #Fungsi untuk menghitung Len dari array
 def Len(array : list, i: int = 0) -> int: 
     while True: 
-        if Marking(array[i]): 
+        if Marking(array[i]) == True: 
             return i
         i += 1
 
@@ -45,8 +68,3 @@ def array_eff_None(list : list, i : int = 0) -> list:
         arr[i] = list[i]
         i += 1
     return arr
-#contoh Implementasi 
-""" for item in array: 
-    arr = Appends(arr, item)
-    print(arr)
-    """

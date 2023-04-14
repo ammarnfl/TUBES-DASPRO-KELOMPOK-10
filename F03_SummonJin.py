@@ -43,6 +43,7 @@ def Summonjin(array_of_user : list) -> list:
             break
         else: 
             print(f"tidak ada jenis jin bernomor {jin}!")
+    return array_of_user
         
 def isUsernameExist(username : str, array_of_user : list) -> bool: 
     i = 0
