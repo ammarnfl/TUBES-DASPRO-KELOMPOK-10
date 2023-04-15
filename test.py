@@ -2,6 +2,8 @@ from Z2_CSV_Function import *
 from Z1_ListFunction import *
 from F14_Save import *
 
-a = [['123', '234', 'waduh', 'waduh', 'anjime', 'mamah', 'muda', 'suka', 'ngohahaha',  Mark], Mark]
-diles = input()
-save(diles, a, 'waduh.csv')
+array_of_candi = [['123', '234', 'waduh', 'azazel',  Mark, None], Mark, None]
+
+index_jinCandi = get_element_matriks(array_of_candi, 'azazel')
+array_of_candi = Remove(array_of_candi, index_jinCandi)
+print(array_of_candi)

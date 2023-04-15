@@ -2,11 +2,6 @@
 from random import *
 from Z1_ListFunction import *
 
-
-#pasir
-#batu
-#air
-
 def CollectMaterial(array_of_material : list) -> list:
     pasir = randrange(1,5)
     batu = randrange(1,5)

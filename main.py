@@ -32,8 +32,6 @@ load(args.nama_folder, 'user.csv', users)
 load(args.nama_folder, 'candi.csv', candi)
 load(args.nama_folder, 'bahan_bangunan.csv', bahan_bangunan)
 
-
-
 if(os.path.isdir(args.nama_folder) == True): 
     print(array_eff_None(users))
     print('Selamat datang di program "Manajerial candi"')
@@ -64,15 +62,17 @@ if(os.path.isdir(args.nama_folder) == True):
             Summonjin(users)
         #fungsi hapus jin
         elif role == "bandung_bondowoso" and masukkan == "hapusjin": 
-            users, username_jin = HapusJin(users)
+            username_jin = input("Masukkan username jin: ")
+            users = HapusJin(users, username_jin)
+            candi = HapusJinCandi(candi, username_jin)
         #fungsi ubah tipe jin
         elif role == "bandung_bondowoso" and masukkan == "ubahjin": 
             ubah_jin(users)
         
         elif role == "jin_pembangun" and masukkan == "bangun": 
-            Jin_Pembangun(candi, bahan_bangunan, Username)
+            (candi, bahan_bangunan) = Jin_Pembangun(candi, bahan_bangunan, Username)
         elif role == "jin_pengumpul" and masukkan == "kumpul":
-            bahan_bangunan, pasir, batu, air = CollectMaterial(bahan_bangunan)
+            (bahan_bangunan, pasir, batu, air) = CollectMaterial(bahan_bangunan)
             print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
         elif role == "roro_jonggrang":
             print()

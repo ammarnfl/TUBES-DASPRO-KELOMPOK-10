@@ -1,9 +1,7 @@
 from Z1_ListFunction import *
 
-def HapusJin(array_of_user : list) -> list: 
+def HapusJin(array_of_user : list, username_jin : str) -> list: 
     isUsernameExist = False
-    username_jin = input("Masukkkan username Jin: ")
-
     #check username ada atau tidak 
     i = 0 
     while Marking(array_of_user[i]) == False: 
@@ -12,9 +10,7 @@ def HapusJin(array_of_user : list) -> list:
             isUsernameExist = True
             break
         i += 1
-    if Marking(array_of_user[i]) == True:
-        isUsernameExist = False
-
+    
     #kondisi jika username ditemukan atau tidak
     if isUsernameExist == True and (role == 'jin_pengumpul' or role == 'jin_pembangun'): 
         choice = input(f"Apakah anda yakin ingin menghapus jin dengan username {username_jin} Y/N? ")
@@ -25,5 +21,29 @@ def HapusJin(array_of_user : list) -> list:
             print("Yah gajadi dihapus")
     else: 
         print("Tidak ada jin dengan username tersebut")
+    
+    return array_of_user
 
-    return array_of_user, username_jin
+#untuk menghapus jin yang pernah membuat candi 
+def HapusJinCandi(array_of_candi : list, username_jin : str) -> list:
+    isUsernameExist = False
+    #check username ada atau tidak 
+    i = 0 
+    while array_of_candi[i] != -9999: 
+        if array_of_candi[i][1] == username_jin: 
+            isUsernameExist = True
+            break
+        i += 1
+    #remove semua yang ada username
+    i = 0
+    if isUsernameExist == True: 
+        while array_of_candi[i] != -9999: 
+            if array_of_candi[i][1] == username_jin:   
+                array_of_candi = Remove(array_of_candi, i)
+                i = 0
+            i += 1
+    #kasus jika tidak ada ditemukan jin dengan username_jin
+    else: 
+        print("Tidak ada jin dengan username tersebut")
+    
+    return array_of_candi
