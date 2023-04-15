@@ -35,13 +35,15 @@ def HapusJinCandi(array_of_candi : list, username_jin : str) -> list:
             break
         i += 1
     #remove semua yang ada username
-    i = 0
+    i = 1
     if isUsernameExist == True: 
         while array_of_candi[i] != -9999: 
+            array_of_candi[i][0] = str(i)
             if array_of_candi[i][1] == username_jin:   
-                array_of_candi = Remove(array_of_candi, i)
-                i = 0
+                array_of_candi = Remove(array_of_candi, i) 
+                i = 1
             i += 1
+
     #kasus jika tidak ada ditemukan jin dengan username_jin
     else: 
         print("Tidak ada jin dengan username tersebut")

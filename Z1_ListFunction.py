@@ -57,7 +57,7 @@ def array_eff_None(list : list, i : int = 0) -> list:
     return arr
 
 def Remove(array : list, index : int) -> list: 
-    newarr = [None for i in range (Neff-1)]
+    newarr = [None for i in range (Neff)]
     newarr[0] == Mark
     for i in range(Len(array)+1):
         if i < index: 
@@ -65,7 +65,3 @@ def Remove(array : list, index : int) -> list:
         elif i > index: 
             newarr = Appends(newarr, array[i])      
     return newarr
-
-a = [[1,2,3,-9999], [4,5,6,-9999], [11,12,13,-9999], -9999]
-a = get_element_matriks(a, 3)
-print(a)

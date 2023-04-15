@@ -26,4 +26,3 @@ def CollectMaterial(array_of_material : list) -> list:
             i += 1
  
     return array_of_material, pasir, batu, air
-

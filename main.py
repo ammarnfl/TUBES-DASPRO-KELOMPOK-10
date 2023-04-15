@@ -33,7 +33,7 @@ load(args.nama_folder, 'candi.csv', candi)
 load(args.nama_folder, 'bahan_bangunan.csv', bahan_bangunan)
 
 if(os.path.isdir(args.nama_folder) == True): 
-    print(array_eff_None(users))
+    #print(array_eff_None(users))
     print('Selamat datang di program "Manajerial candi"')
     print("Silahkan masukkan username anda")
 
