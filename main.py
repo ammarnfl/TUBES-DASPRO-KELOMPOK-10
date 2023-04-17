@@ -108,6 +108,7 @@ if(os.path.isdir(args.nama_folder) == True):
             print(f"ID Candi Termurah: {candiTermurah} (Rp{HargaTermurah})")
                 
 
+        #fungsi Roro Jonggrang
         #fungsi hancurkancandi
         elif role == "roro_jonggrang" and masukkan == "hancurkancandi":
             id_candi = input("Masukkan ID candi: ")
