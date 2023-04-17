@@ -20,6 +20,12 @@ def save(path : str,  arr : list, namefile: str):
             f.write("\n")
             i += 1
         f.close()
+        
+        print(f"Membuat folder {path}...")          
+
+
+
+            
 
     else:
         f =  open(os.path.join(path, namefile), 'w')

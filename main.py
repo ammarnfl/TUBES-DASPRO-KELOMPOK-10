@@ -13,6 +13,8 @@ from F07_JinPengumpul import *
 from F08_Batchbangun_Batchkumpul import *
 
 from F10_LaporanCandi import *
+from F11_HancurkanCandi import *
+from F12_AyamBerkokok import *
 from F13_Load import *
 from F14_Save import *
 from Z1_ListFunction import *
@@ -39,7 +41,7 @@ if(os.path.isdir(args.nama_folder) == True):
 
     #print(array_eff_None(users))
     print('Selamat datang di program "Manajerial candi"')
-    print("Silahkan masukkan username anda")
+    print("Help untuk bantuan sintaks")
 
     #=============================================================================#
     #============================Program Utama====================================#
@@ -106,9 +108,13 @@ if(os.path.isdir(args.nama_folder) == True):
             print(f"ID Candi Termurah: {candiTermurah} (Rp{HargaTermurah})")
                 
 
+        #fungsi hancurkancandi
+        elif role == "roro_jonggrang" and masukkan == "hancurkancandi":
+            id_candi = input("Masukkan ID candi: ")
+            candi = HancurkanCandi(candi, id_candi)
+        
+        #fungsi ayamberkokok
 
-        elif role == "roro_jonggrang":
-            print()
         elif masukkan == "help": 
             print()
 
