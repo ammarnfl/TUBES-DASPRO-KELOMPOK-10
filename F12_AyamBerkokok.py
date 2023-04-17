@@ -2,7 +2,7 @@ from Z1_ListFunction import *
 
 def AyamBerkokok (array_of_candi: list) -> str:
     print("Kukuruyuk.. Kukuruyuk..")
-    count_candi = Len(array_of_candi)
+    count_candi = Len(array_of_candi) - 1
     print(f"Jumlah candi: {count_candi}")
 
     if count_candi >= 100:
