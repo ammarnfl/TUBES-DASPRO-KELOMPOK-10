@@ -66,7 +66,8 @@ def Remove(array : list, index : int) -> list:
             newarr = Appends(newarr, array[i])      
     return newarr
 
-def array_to_Mark(list : list, index : int) -> list:
+def array_to_None(list : list, index : int) -> list:
     for i in range (5):
-        list[index][i] = Mark
+        list[index] = ""
+        Appends(list, Mark)
     return list
