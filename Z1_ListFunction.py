@@ -68,6 +68,6 @@ def Remove(array : list, index : int) -> list:
 
 def array_to_None(list : list, index : int) -> list:
     for i in range (5):
-        list[index] = ""
+        list[index][i] = ""
         Appends(list, Mark)
     return list
