@@ -1,10 +1,11 @@
 from Z1_ListFunction import * 
 
-def AyamBerkokok (Total_candi: int) -> str:
+def AyamBerkokok (array_of_candi: list) -> str:
     print("Kukuruyuk.. Kukuruyuk..")
-    print(f"Jumlah candi: {Total_candi}")
+    count_candi = Len(array_of_candi)
+    print(f"Jumlah candi: {count_candi}")
 
-    if Total_candi >= 100:
+    if count_candi >= 100:
         print("Yah, Bandung Bondowoso memenangkan permainan!")
     
     else:
