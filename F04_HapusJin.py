@@ -45,9 +45,4 @@ def HapusJinCandi(array_of_candi : list, username_jin : str) -> list:
             i += 1
             array_of_candi[0][0] = 'id'
 
-
-    #kasus jika tidak ada ditemukan jin dengan username_jin
-    else: 
-        print("Tidak ada jin dengan username tersebut")
-    
     return array_of_candi

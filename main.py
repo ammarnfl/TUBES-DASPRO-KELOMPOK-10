@@ -121,7 +121,9 @@ if(os.path.isdir(args.nama_folder) == True):
 
 
         elif masukkan == "save" and role != "": 
-            folder = input("Masukkan nama folder: ")
+            parent = "data"
+            folderpath = input("Masukkan nama folder: ")
+            folder = parent + "/" + folderpath
             save(folder, users, 'user.csv')
             save(folder, candi, 'candi.csv')
             save(folder, bahan_bangunan, 'bahan_bangunan.csv')

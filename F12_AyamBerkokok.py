@@ -1,6 +1,6 @@
 from Z1_ListFunction import * 
-
-def AyamBerkokok (array_of_candi: list) -> str:
+from typing import Any
+def AyamBerkokok (array_of_candi: list) -> Any:
     print("Kukuruyuk.. Kukuruyuk..")
     count_candi = Len(array_of_candi) - 1
     print(f"Jumlah candi: {count_candi}")
@@ -13,4 +13,5 @@ def AyamBerkokok (array_of_candi: list) -> str:
         print("")
         print("*Bandung Bondowoso angry noise*")
         print("Roro Jonggrang dikutuk menjadi candi.")
-    exit
+    
+    return exit()

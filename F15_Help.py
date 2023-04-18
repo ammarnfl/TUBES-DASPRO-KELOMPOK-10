@@ -1,6 +1,6 @@
 from F01_Login import *
 
-def Help:
+def Help():
     if Login_status() == False:
         print("=========== HELP ===========")
         print("1. login")
