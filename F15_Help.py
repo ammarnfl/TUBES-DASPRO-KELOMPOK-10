@@ -7,7 +7,7 @@ def Help:
         print("untuk masuk menggunakan akun")
         print("2. exit")
         print("untuk keluar dari program dan kembali ke terminal")
-    elif Login_status() == False:
+    elif Login_status() == True:
         if role == "bandung_bondowoso":
             print("=========== HELP ===========")
             print("1. logout")
