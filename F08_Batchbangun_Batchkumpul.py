@@ -37,6 +37,42 @@ def Batch_kumpul(array_of_user : list, array_of_material : list) -> list:
 
 
 
+def Batch_kumpul(array_of_user : list, array_of_material : list) -> list:
+    role = "jin_pengumpul"
+    i = 0
+    count = 0
+    while Marking(array_of_user[i]) == False: 
+        if array_of_user[i][2] == role: 
+            count += 1
+        i += 1
+    pasir, batu, air = 0, 0, 0
+    for i in range(count):  
+        pasir += randrange(1,5)
+        batu += randrange(1,5)
+        air += randrange(1,5)
+
+    array_pasir = ['pasir', 'PerluNih!', str(pasir), Mark]
+    array_batu = ['batu', 'KerasCuy', str(batu), Mark]
+    array_air = ['air', 'Enak nih diminum', str(air), Mark]
+    if Len(array_of_material) == 1: 
+        array_of_material = Appends(array_of_material, array_pasir)
+        array_of_material = Appends(array_of_material, array_batu)
+        array_of_material = Appends(array_of_material, array_air)
+    else: 
+        i = 0
+        while Marking(array_of_material[i]) != True: 
+            j = 0
+            if array_of_material[i][j] == 'pasir': 
+                array_of_material[i][2] = str(int(array_of_material[i][2]) + pasir)
+            elif array_of_material[i][j] == 'batu':
+                array_of_material[i][2] = str(int(array_of_material[i][2]) + batu)
+            elif array_of_material[i][j] == 'air': 
+                array_of_material[i][2] = str(int(array_of_material[i][2]) + air)
+            i += 1
+    return array_of_material, pasir, batu, air
+
+
+
 def Batch_bangun(array_of_user : list, array_of_candi : list, array_of_material : list) -> list: 
     role = "jin_pembangun"
     i = 0
@@ -64,7 +100,7 @@ def Batch_bangun(array_of_user : list, array_of_candi : list, array_of_material 
         if array_of_user[i][2] == role: 
             array_of_jin_pembangun = Appends(array_of_jin_pembangun, array_of_user[i][0])
         i += 1
-
+    count_jin_pembangun = Len(array_of_jin_pembangun)
     #Generate banyak bahan 
     for i in range(count): 
         pasir = randrange(1,5)
@@ -118,11 +154,20 @@ def Batch_bangun(array_of_user : list, array_of_candi : list, array_of_material 
             if count_candi == 101: 
                 print("Candi berhasil dibangun")
             else: 
-                if Len(array_of_candi) == 1: 
-                    candi = [str(count_candi), array_of_jin_pembangun[i], str(pasir_needed), str(batu_needed), str(air_needed), Mark]
-                else: 
-                    candi = [str(count_candi), array_of_jin_pembangun[i], str(pasir_needed), str(batu_needed), str(air_needed), Mark]
-                Appends(array_of_candi, candi)
+                z = 0
+                status_bangun_kosong = False
+                while Marking(array_of_candi[z]) == False: 
+                    if Len(array_of_candi[z]) == 1: 
+                        array_of_candi[z] = [str(z), array_of_jin_pembangun[i], str(pasir_needed), str(batu_needed), str(air_needed), Mark]
+                        status_bangun_kosong = True
+                        break
+                    z += 1
+                if status_bangun_kosong == False: 
+                    if Len(array_of_candi) == 1: 
+                        candi = [str(count_candi), array_of_jin_pembangun[i], str(pasir_needed), str(batu_needed), str(air_needed), Mark]
+                    else: 
+                        candi = [str(count_candi), array_of_jin_pembangun[i], str(pasir_needed), str(batu_needed), str(air_needed), Mark]
+                    Appends(array_of_candi, candi)
         status_bangun = True
         return array_of_material, array_of_candi, count, total_pasir_needed, total_batu_needed, total_air_needed, status_bangun
     
