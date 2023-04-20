@@ -11,9 +11,9 @@ def Batch_kumpul(array_of_user : list, array_of_material : list) -> list:
         i += 1
     pasir, batu, air = 0, 0, 0
     for i in range(count):  
-        pasir += randrange(1,5)
-        batu += randrange(1,5)
-        air += randrange(1,5)
+        pasir += randrange(0,5)
+        batu += randrange(0,5)
+        air += randrange(0,5)
 
     array_pasir = ['pasir', 'PerluNih!', str(pasir), Mark]
     array_batu = ['batu', 'KerasCuy', str(batu), Mark]

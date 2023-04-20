@@ -6,9 +6,9 @@ def Summonjin(array_of_user : list) -> list:
     print("(2) Pembangun - Bertugas membangun candi")
     while True: 
         role = "jin_pengumpul"
-        jin = int(input("Masukkan nomor jenis jin yang ingin dipanggil: "))
+        jin = (input("Masukkan nomor jenis jin yang ingin dipanggil: "))
         #jin pengumpul
-        if jin == 1: 
+        if jin == "1": 
             print("memilih jin pengumpul.")
             username = input("Masukkan username jin: ")
 
@@ -25,7 +25,7 @@ def Summonjin(array_of_user : list) -> list:
                 print(f"username {username} sudah diambil")
                       
         #jin pembangun
-        elif jin == 2: 
+        elif jin == "2": 
             role = "jin_pembangun"
             print("memilih jin pembangun.")
             username = input("Masukkan username jin: ")

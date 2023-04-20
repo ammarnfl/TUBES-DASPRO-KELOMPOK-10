@@ -31,12 +31,15 @@ bahan_bangunan = [None for i in range(Neff)]
 
 #argparser untuk mengecek folder ada atau tidak 
 parser = argparse.ArgumentParser()
-parser.add_argument("nama_folder", help="Usage python3 main.py <nama_folder>")
+parser.add_argument("nama_folder", nargs ='?', help="Usage python3 main.py <nama_folder>")
 args = parser.parse_args()
-
 #load : mengambil data dari csv
 
-if(os.path.isdir(args.nama_folder) == True): 
+if args.nama_folder is None: 
+    print("\nTidak ada nama folder yang diberikan!\n")
+    print("Usage: python main.py <nama_folder>")
+    exit()
+elif(os.path.isdir(args.nama_folder) == True): 
     load(args.nama_folder, 'user.csv', users)
     load(args.nama_folder, 'candi.csv', candi)
     load(args.nama_folder, 'bahan_bangunan.csv', bahan_bangunan)
@@ -64,29 +67,36 @@ if(os.path.isdir(args.nama_folder) == True):
             if role != "":
                 role = Logout()
             else: 
-                print("Login gagal!\nAnda belum login, silahkan login terlebih dahulu sebelum melakukan logout")   
+                print("Login gagal!\nAnda belum login, silahkan login terlebih dahulu sebelum melakukan logout") 
+
         #fungsi summonjin
         elif role == "bandung_bondowoso" and masukkan == "summonjin": 
             Summonjin(users)
+
         #fungsi hapus jin
         elif role == "bandung_bondowoso" and masukkan == "hapusjin": 
             username_jin = input("Masukkan username jin: ")
             users = HapusJin(users, username_jin)
             candi = HapusJinCandi(candi, username_jin)
+
         #fungsi ubah tipe jin
         elif role == "bandung_bondowoso" and masukkan == "ubahjin": 
             ubah_jin(users)
+
         #fungsi bangun
         elif role == "jin_pembangun" and masukkan == "bangun": 
             (candi, bahan_bangunan) = Jin_Pembangun(candi, bahan_bangunan, Username)
+
         #fungsi kumpul
         elif role == "jin_pengumpul" and masukkan == "kumpul":
             (bahan_bangunan, pasir, batu, air) = CollectMaterial(bahan_bangunan)
             print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
+
         #fungsi batchkumpul
         elif role == "bandung_bondowoso" and masukkan == "batchkumpul": 
             (bahan_bangunan, pasir, batu, air) = Batch_kumpul(users, bahan_bangunan)
             print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
+
         #fungsi batchbangun
         elif role == "bandung_bondowoso" and masukkan == "batchbangun": 
             (bahan_bangunan, candi, jumlah_jin, pasir, batu, air, status_bangun) = Batch_bangun(users, candi, bahan_bangunan)
@@ -97,19 +107,16 @@ if(os.path.isdir(args.nama_folder) == True):
                     print(f"Mengerahkan {jumlah_jin} jin untuk membangun candi dengan total bahan {pasir} pasir, {batu} batu, {air} air")
                 else:
                     print(f"Bangun gagal. Kurang {pasir} pasir, {batu} batu, {air} air ") 
+        #fungsi laporan jin 
         elif role == "bandung_bondowoso" and masukkan == "laporanjin": 
             #belum seleseai
             break
+
+        #fungsi laporan candi
         elif role == "bandung_bondowoso" and masukkan == "laporancandi": 
             totalCandi, totalPasir, totalBatu, totalAir, candiTermahal, candiTermurah, HargaTermahal, HargaTermurah  = LaporanCandi(candi)
-            print(f"Total Candi: {totalCandi} ")
-            print(f"Total Pasir yang digunakan: {totalPasir}")
-            print(f"Total Batu yang digunakan: {totalBatu}")
-            print(f"Total Air yang digunakan: {totalAir}")
-            print(f"ID Candi Termahal: {candiTermahal} (Rp{HargaTermahal})")
-            print(f"ID Candi Termurah: {candiTermurah} (Rp{HargaTermurah})")
+            print_laporan_candi(totalCandi, totalPasir, totalBatu, totalAir, candiTermahal, HargaTermahal, candiTermurah, HargaTermurah )
                 
-
         #fungsi Roro Jonggrang
         #fungsi hancurkancandi
         elif role == "roro_jonggrang" and masukkan == "hancurkancandi":
@@ -117,11 +124,11 @@ if(os.path.isdir(args.nama_folder) == True):
             candi = HancurkanCandi(candi, id_candi)
         
         #fungsi ayamberkokok
-
         elif masukkan == "help": 
             Help(role)
             
-        elif masukkan == "save" and role != "": 
+        #fungsi Save
+        elif masukkan == "save": 
             parent = "data"
             folderpath = input("Masukkan nama folder: ")
             folder = parent + "/" + folderpath
@@ -129,8 +136,9 @@ if(os.path.isdir(args.nama_folder) == True):
             save(folder, candi, 'candi.csv')
             save(folder, bahan_bangunan, 'bahan_bangunan.csv')
 
+        #fungsi exit
         elif masukkan == "exit": 
-            exit()
+            Exit(users, candi, bahan_bangunan)
 
         #buat debugging
         elif masukkan == "user": 
