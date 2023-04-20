@@ -32,13 +32,13 @@ def Help:
             print("menghancurkan candi yang telah dibangun oleh jin")
             print("3. ayamberkokok")
             print("menyelesaikan permainan")
-        elif role == "jin pembangun":
+        elif role == "jin_pembangun":
             print("=========== HELP ===========")
             print("1. logout")
             print("untuk keluar dari akun yang digunakan sekarang")
             print("2. jinpembangun")
             print("membangun candi")
-        elif role == "jin pengumpul":
+        elif role == "jin_pengumpul":
             print("=========== HELP ===========")
             print("1. logout")
             print("untuk keluar dari akun yang digunakan sekarang")
