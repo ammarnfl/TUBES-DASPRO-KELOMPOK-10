@@ -11,7 +11,7 @@ from F05_UbahJin import *
 from F06_JinPembangun import *
 from F07_JinPengumpul import *
 from F08_Batchbangun_Batchkumpul import *
-
+from F09_LaporanJin import *
 from F10_LaporanCandi import *
 from F11_HancurkanCandi import *
 from F12_AyamBerkokok import *
@@ -108,7 +108,7 @@ elif(os.path.isdir(args.nama_folder) == True):
                 print("Bangun gagal. Anda tidak punya jin pembangun. Silahkan summon terlebih dahulu.")
             else: 
                 if status_bangun == True: 
-                    if (pasir == 0 and batu == 0 and air == 0) and isCandiOver == True: 
+                    if (pasir == 5 and batu == 5 and air == 5) and isCandiOver == True: 
                         print("Bangun berhasil")
                     else: 
                         print(f"Mengerahkan {jumlah_jin_dipakai} jin untuk membangun candi dengan total bahan {pasir} pasir, {batu} batu, {air} air")
@@ -117,10 +117,15 @@ elif(os.path.isdir(args.nama_folder) == True):
                         print("Bangun gagal")
                     else:
                         print(f"Bangun gagal. Kurang {pasir} pasir, {batu} batu, {air} air ") 
+
+                        
         #fungsi laporan jin 
         elif role == "bandung_bondowoso" and masukkan == "laporanjin": 
-            #belum seleseai
-            break
+            jumlahJin, pasir, batu, air = LaporanJin(users)
+            print(f"Jumlah jin: {jumlahJin}")
+            print(f"Total pasir: {pasir}")
+            print(f"Total batu: {batu}")
+            print(f"Total air: {air}")
 
         #fungsi laporan candi
         elif role == "bandung_bondowoso" and masukkan == "laporancandi": 
