@@ -1,4 +1,4 @@
-Neff = 120
+Neff = 150
 Mark = -9999
 arr = [None for i in range(Neff)]
 arr[0] = Mark

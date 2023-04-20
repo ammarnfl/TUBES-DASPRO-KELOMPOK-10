@@ -18,6 +18,4 @@ def HancurkanCandi(array_of_candi : list, id_candi : str) -> str:
         print("Tidak ada candi dengan ID tersebut")
     
     #kondisi jika id ditemukan
-    
-
     return array_of_candi

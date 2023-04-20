@@ -93,20 +93,30 @@ elif(os.path.isdir(args.nama_folder) == True):
             print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
 
         #fungsi batchkumpul
-        elif role == "bandung_bondowoso" and masukkan == "batchkumpul": 
-            (bahan_bangunan, pasir, batu, air) = Batch_kumpul(users, bahan_bangunan)
-            print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
+        elif role == "bandung_bondowoso" and masukkan == "batchkumpul":  
+            (bahan_bangunan, jumlah_jin_pengumpul, pasir, batu, air) = Batch_kumpul(users, bahan_bangunan)
+            if jumlah_jin_pengumpul == 0: 
+                print("Kumpul gagal. Anda tidak memiliki jin pengumpul, summonjin pengumpul terlebih dahulu")
+            else: 
+                print(f"Mengerahkan {jumlah_jin_pengumpul} untuk mengumpulkan bahan ")
+                print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
 
         #fungsi batchbangun
         elif role == "bandung_bondowoso" and masukkan == "batchbangun": 
-            (bahan_bangunan, candi, jumlah_jin, pasir, batu, air, status_bangun) = Batch_bangun(users, candi, bahan_bangunan)
+            (bahan_bangunan, candi, jumlah_jin, jumlah_jin_dipakai, pasir, batu, air, status_bangun, isCandiOver) = Batch_bangun(users, candi, bahan_bangunan)
             if jumlah_jin == 0: 
                 print("Bangun gagal. Anda tidak punya jin pembangun. Silahkan summon terlebih dahulu.")
             else: 
                 if status_bangun == True: 
-                    print(f"Mengerahkan {jumlah_jin} jin untuk membangun candi dengan total bahan {pasir} pasir, {batu} batu, {air} air")
+                    if (pasir == 0 and batu == 0 and air == 0) and isCandiOver == True: 
+                        print("Bangun berhasil")
+                    else: 
+                        print(f"Mengerahkan {jumlah_jin_dipakai} jin untuk membangun candi dengan total bahan {pasir} pasir, {batu} batu, {air} air")
                 else:
-                    print(f"Bangun gagal. Kurang {pasir} pasir, {batu} batu, {air} air ") 
+                    if isCandiOver == True: 
+                        print("Bangun gagal")
+                    else:
+                        print(f"Bangun gagal. Kurang {pasir} pasir, {batu} batu, {air} air ") 
         #fungsi laporan jin 
         elif role == "bandung_bondowoso" and masukkan == "laporanjin": 
             #belum seleseai
@@ -124,6 +134,9 @@ elif(os.path.isdir(args.nama_folder) == True):
             candi = HancurkanCandi(candi, id_candi)
         
         #fungsi ayamberkokok
+        elif role == "roro_jonggrang" and masukkan == "ayamberkokok": 
+            AyamBerkokok(candi)
+    
         elif masukkan == "help": 
             Help(role)
             
@@ -147,6 +160,12 @@ elif(os.path.isdir(args.nama_folder) == True):
             print(array_eff_None(bahan_bangunan))
         elif masukkan == "candi":
             print(array_eff_None(candi))
+        elif masukkan == "jumlahcandi": 
+            count_candi = 0
+            for i in range(1, Len(candi)): 
+                if Len(candi[i]) != 1: 
+                    count_candi += 1
+            print(count_candi)
 
 elif(os.path.isdir(args.nama_folder) == False):
     print(f'Folder "{args.nama_folder}" tidak ditemukan.') 
