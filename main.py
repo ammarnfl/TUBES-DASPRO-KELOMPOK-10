@@ -17,6 +17,8 @@ from F11_HancurkanCandi import *
 from F12_AyamBerkokok import *
 from F13_Load import *
 from F14_Save import *
+from F15_Help import *
+from F16_Exit import *
 from Z1_ListFunction import *
 from Z2_CSV_Function import *
 
@@ -117,9 +119,8 @@ if(os.path.isdir(args.nama_folder) == True):
         #fungsi ayamberkokok
 
         elif masukkan == "help": 
-            print()
-
-
+            Help(role)
+            
         elif masukkan == "save" and role != "": 
             parent = "data"
             folderpath = input("Masukkan nama folder: ")
@@ -127,7 +128,7 @@ if(os.path.isdir(args.nama_folder) == True):
             save(folder, users, 'user.csv')
             save(folder, candi, 'candi.csv')
             save(folder, bahan_bangunan, 'bahan_bangunan.csv')
-        
+
         elif masukkan == "exit": 
             exit()
 
