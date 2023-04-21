@@ -3,7 +3,7 @@ from Z1_ListFunction import *
 
 def save(path : str,  arr : list, namefile: str):
     if not os.path.exists(path):
-        print("ga ada foldernya")
+        print("Nama file tidak ada, membuat file baru")
         os.makedirs(path)
         f = open(os.path.join(path, namefile), 'w')
         f.close()

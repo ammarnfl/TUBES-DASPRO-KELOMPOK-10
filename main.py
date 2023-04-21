@@ -45,8 +45,10 @@ elif(os.path.isdir(args.nama_folder) == True):
     load(args.nama_folder, 'bahan_bangunan.csv', bahan_bangunan)
 
     #print(array_eff_None(users))
+    print("\nLoading...\n")
+    print("\n=========== WELCOME ===========\n\n")
     print('Selamat datang di program "Manajerial candi"')
-    print("Help untuk bantuan sintaks")
+    print('Masukkan command "help" untuk bantuan sintaks!')
 
     #=============================================================================#
     #============================Program Utama====================================#
@@ -56,10 +58,9 @@ elif(os.path.isdir(args.nama_folder) == True):
         #fungsi login 
         if masukkan == "login": 
             if role != "": 
-                print(f"Login gagal!\nAnda telah melakukan login dengan username {Username}, silahkan 'logout'")
-                print("Sebelum melakukan login kembali")
+                print(f"Login gagal!\nAnda telah melakukan login dengan username {Username}, silahkan lakukan 'logout' sebelum melakukan login kembali")
             while role == "":
-                Username = input("username: ")
+                Username = input("Username: ")
                 Password = input("Password: ")
                 role = Login(Username, Password, users)
         #fungsi logout
@@ -67,7 +68,7 @@ elif(os.path.isdir(args.nama_folder) == True):
             if role != "":
                 role = Logout()
             else: 
-                print("Login gagal!\nAnda belum login, silahkan login terlebih dahulu sebelum melakukan logout") 
+                print("\nLogout gagal!\nAnda belum login, silahkan login terlebih dahulu sebelum melakukan logout") 
 
         #fungsi summonjin
         elif role == "bandung_bondowoso" and masukkan == "summonjin": 
@@ -173,5 +174,5 @@ elif(os.path.isdir(args.nama_folder) == True):
             print(count_candi)
 
 elif(os.path.isdir(args.nama_folder) == False):
-    print(f'Folder "{args.nama_folder}" tidak ditemukan.') 
+    print(f'\nFolder "{args.nama_folder}" tidak ditemukan.') 
 
