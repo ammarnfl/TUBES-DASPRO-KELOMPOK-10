@@ -59,5 +59,8 @@ def check_password(password : str) -> bool:
     return False
 
 def summoned_jin(arr : list) -> int: 
-    countjin = Len(arr) - 3
+    countjin = 0
+    for i in range(Len(arr)): 
+        if arr[i][2] == 'jin_pembangun' or arr[i][2] == 'jin_pengumpul': 
+            countjin += 1
     return countjin

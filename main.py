@@ -74,18 +74,19 @@ elif(os.path.isdir(args.nama_folder) == True):
 
         #fungsi summonjin
         elif role == "bandung_bondowoso" and masukkan == "summonjin": 
-            Summonjin(users)
+            totalJin = summoned_jin(users)
+            print(totalJin)
+            if totalJin < 100: 
+                print(f"Tersisa {100-totalJin} lagi bisa disummon")
+                Summonjin(users)
+            else: 
+                print("tidak bisa summonjin lagi")
 
         #fungsi hapus jin
         elif role == "bandung_bondowoso" and masukkan == "hapusjin": 
-            totalJin = summoned_jin()
-            if totalJin < 100:
-                username_jin = input("Masukkan username jin: ")
-                users = HapusJin(users, username_jin)
-                candi = HapusJinCandi(candi, username_jin)
-                print(f"Jumlah Jin yang bisa disummon: {totalJin}")
-            else: 
-                print("Jumlahjin sudah melebihi batas")
+            username_jin = input("Masukkan username jin: ")
+            users = HapusJin(users, username_jin)
+            candi = HapusJinCandi(candi, username_jin)
 
         #fungsi ubah tipe jin
         elif role == "bandung_bondowoso" and masukkan == "ubahjin": 

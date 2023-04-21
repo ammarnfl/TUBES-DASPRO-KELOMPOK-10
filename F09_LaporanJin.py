@@ -84,36 +84,36 @@ def JinTerajinArray(array_of_user : list, array_of_candi : list) -> list:
         #jumlah candi terbanyak dan paling sedikit
         Maks = int(array_jin_rajin[0][1])
         Mins = int(array_jin_rajin[Len(array_jin_rajin)-1][1])
+        print(array_jin_rajin[Len(array_jin_rajin)-1][0])
 
         
         #memasukkan nilai jin yang membangun paling banyak dengan nilai yang sama ke dalam array jin rajin
-        jinRajin = [None for i in range(101)]
+        jinRajin = [None for i in range(Neff)]
         jinRajin[0] = Mark
         for i in range(Len(array_jin_rajin)): 
             if int(array_jin_rajin[i][1]) == Maks: 
                 Appends(jinRajin, array_jin_rajin[i])
 
         #memasukkan nilai jin yang membangun paling sedikit atau malas dengna nilai yang sama ke dalam array jin malas
-        jinMalas = [None for i in range(101)]
+        jinMalas = [None for i in range(Neff)]
         jinMalas[0] = Mark
         for i in range(Len(array_jin_rajin)): 
             if int(array_jin_rajin[i][1]) == Mins: 
                 Appends(jinMalas, array_jin_rajin[i])
 
         #sorting leksikografis jinrajin
-
         for i in range(Len(jinRajin)): 
             for j in range(Len(jinRajin)- i -1): 
                 if jinRajin[j][0] > jinRajin[j+1][0]: 
                     jinRajin[j+1], jinRajin[j] = jinRajin[j], jinRajin[j+1]
         
+ 
         #sorting leksikografis jinmalas
-
         for i in range(Len(jinMalas)): 
             for j in range(Len(jinMalas)- i -1): 
                 if jinMalas[j][0] < jinMalas[j+1][0]: 
                     jinMalas[j+1], jinMalas[j] = jinMalas[j], jinMalas[j+1]
-        
+        print(jinMalas)
         #memasukkan jin pembangun yang mengubah ke jin pengumpul. Namun, sudan membangun candi
         jinTermalas = jinMalas[0][0]
         jinTerajin = jinRajin[0][0]
