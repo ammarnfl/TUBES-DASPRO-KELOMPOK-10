@@ -1,5 +1,5 @@
 
-def Help(role : str):
+def Help(role : str) -> str:
     if role == "":
         print("=========== HELP ===========")
         print("1. login")

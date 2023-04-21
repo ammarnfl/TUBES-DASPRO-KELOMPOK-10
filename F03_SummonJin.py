@@ -1,7 +1,7 @@
 from Z1_ListFunction import *
 
 def Summonjin(array_of_user : list) -> list: 
-    print("Jenis jin yang dapat dipanggil: ")
+    print("\nJenis jin yang dapat dipanggil: ")
     print("(1) Pengumpul - Bertugas mengumpulkan bahan bangunan")
     print("(2) Pembangun - Bertugas membangun candi")
     while True: 

@@ -60,40 +60,22 @@ def Batch_bangun(array_of_user : list, array_of_candi : list, array_of_material 
     array_of_jin_pembangun = [None for i in range(count+1)]
     array_of_jin_pembangun[0] = Mark
     i = 0
-
     #memasukkan jin_pembangun ke dalam array_of_jin_pembangun
     while Marking(array_of_user[i]) == False: 
         if array_of_user[i][2] == role: 
             array_of_jin_pembangun = Appends(array_of_jin_pembangun, array_of_user[i][0])
         i += 1
     
-    #Generate banyak bahan 
-    count_jin = 0
-    count_candi = 0
-    for j in range(Len(array_of_candi)): 
-        if Len(array_of_candi[j]) != 1: 
-            count_candi += 1 
-    count_candi -= 1
-
-    
     #menghitung berapa banyak candi yang perlu dibuat
     for i in range(count): 
-        if count_candi < 100: 
             pasir = randrange(1,5) ; batu = randrange(1,5) ; air = randrange(1,5)
             total_pasir_needed += pasir
             total_batu_needed += batu
             total_air_needed += air 
-            count_jin += 1
-            count_candi += 1
             material_needed = [pasir, batu, air, Mark]
             array_of_material_needed = Appends(array_of_material_needed, material_needed)
-        else: 
-            total_pasir_needed = 5
-            total_batu_needed = 5
-            total_air_needed = 5
     #membandingkan nilai total bahan dibutuhkan dengan total bahan dipunya
 
-  
     if Len(array_of_material) != 1: 
         if int(array_of_material[1][2]) >= total_pasir_needed:
             status_pasir = True
@@ -105,7 +87,8 @@ def Batch_bangun(array_of_user : list, array_of_candi : list, array_of_material 
     #jika kasus semua bahan cukup
     if status_air == True and status_batu == True and status_pasir == True: 
         #mengurangi bahan
-        for i in range(count_jin):
+        jumlahJinDipakai = 0
+        for i in range(count):
             pasir_needed = array_of_material_needed[i][0]
             batu_needed = array_of_material_needed[i][1]
             air_needed = array_of_material_needed[i][2]
@@ -115,16 +98,26 @@ def Batch_bangun(array_of_user : list, array_of_candi : list, array_of_material 
             batu_have = int(array_of_material[2][2])
             array_of_material[2][2] = str( batu_have - batu_needed)
             air_have = int(array_of_material[3][2]) 
-            array_of_material[3][2] = str( air_have - air_needed)
-   
+            array_of_material[3][2] = str(air_have - air_needed)
 
-            #membangun candi
-            #memastikan jumlah candi tidak lebih dari 100
+        
+        #membangun candi
+        for i in range(count):
+            pasir_needed = array_of_material_needed[i][0]
+            batu_needed = array_of_material_needed[i][1]
+            air_needed = array_of_material_needed[i][2]
+
             count_candi_append = Len(array_of_candi)
-            print(count_candi_append)
             if count_candi_append == 101: 
+                id_check = 0
+                while Marking(array_of_candi[id_check]) == False: 
+                    if Len(array_of_candi[id_check]) == 1: 
+                        array_of_candi[id_check] = [str(id_check), array_of_jin_pembangun[i], str(pasir_needed), str(batu_needed), str(air_needed), Mark]
+                        jumlahJinDipakai += 1
+                    id_check += 1
                 break
             else: 
+                jumlahJinDipakai += 1
                 z = 0
                 status_bangun_kosong = False
                 #algoritma yang mengisi array candi bagian kosong terlebih dahulu
@@ -150,13 +143,13 @@ def Batch_bangun(array_of_user : list, array_of_candi : list, array_of_material 
         candi_check -= 1
 
         #apakah candi sudah berjumlah 100? 
-        if candi_check == 100: 
+        if candi_check == 100 and jumlahJinDipakai == 0: 
             isCandiOver = True
         else: 
             isCandiOver = False
         
         status_bangun = True
-        return array_of_material, array_of_candi, count, count_jin, total_pasir_needed, total_batu_needed, total_air_needed, status_bangun, isCandiOver
+        return array_of_material, array_of_candi, count, total_pasir_needed, total_batu_needed, total_air_needed, status_bangun, isCandiOver
     
     #kasus bahan tidak mencukupi
     else:
@@ -173,15 +166,19 @@ def Batch_bangun(array_of_user : list, array_of_candi : list, array_of_material 
 
         status_bangun = False
         if count == 0: 
-            return array_of_material, array_of_candi, count, count_jin, total_air_needed, total_batu_needed, total_air_needed, status_bangun, isCandiOver
+            return array_of_material, array_of_candi, count, total_air_needed, total_batu_needed, total_air_needed, status_bangun, isCandiOver
         
         else: 
+            pasir_needed, batu_needed, air_needed = 0, 0, 0
             pasir_have = int(array_of_material[1][2])
             batu_have = int(array_of_material[2][2])
             air_have = int(array_of_material[3][2]) 
-            
-            pasir_needed = abs(pasir_have - total_pasir_needed)
-            batu_needed = abs(batu_have - total_batu_needed)
-            air_needed = abs(air_have - total_air_needed)
-            return array_of_material, array_of_candi, count, count_jin, pasir_needed, batu_needed, air_needed, status_bangun, isCandiOver
+
+            if status_pasir == False:
+                pasir_needed = Absolute(pasir_have - total_pasir_needed)
+            if status_batu == False: 
+                batu_needed = Absolute(batu_have - total_batu_needed)
+            if status_air == False:
+                air_needed = Absolute(air_have - total_air_needed)
+            return array_of_material, array_of_candi, count, pasir_needed, batu_needed, air_needed, status_bangun, isCandiOver
     

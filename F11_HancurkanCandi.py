@@ -14,8 +14,10 @@ def HancurkanCandi(array_of_candi : list, id_candi : str) -> str:
         choice = input(f"Apakah anda yakin ingin menghancurkan\n candi ID: {id_candi} (Y/N) ")
         if choice == 'Y' or choice == 'y': 
             array_of_candi[int(id_candi)] = ['', Mark]
+        elif choice == 'N' or choice == 'n': 
+            pass
     else: 
-        print("Tidak ada candi dengan ID tersebut")
+        print("Tidak ada candi dengan ID tersebut\n")
     
     #kondisi jika id ditemukan
     return array_of_candi

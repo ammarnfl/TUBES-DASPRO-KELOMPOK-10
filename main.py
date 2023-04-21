@@ -35,7 +35,7 @@ parser.add_argument("nama_folder", nargs ='?', help="Usage python3 main.py <nama
 args = parser.parse_args()
 #load : mengambil data dari csv
 
-if args.nama_folder is None: 
+if args.nama_folder == None: 
     print("\nTidak ada nama folder yang diberikan!\n")
     print("Usage: python main.py <nama_folder>")
     exit()
@@ -62,10 +62,12 @@ elif(os.path.isdir(args.nama_folder) == True):
                 Username = input("username: ")
                 Password = input("Password: ")
                 role = Login(Username, Password, users)
+
         #fungsi logout
         elif masukkan == "logout": 
             if role != "":
-                role = Logout()
+                status_login = Login_status()
+                role = Logout(status_login)
             else: 
                 print("Login gagal!\nAnda belum login, silahkan login terlebih dahulu sebelum melakukan logout") 
 
@@ -103,29 +105,26 @@ elif(os.path.isdir(args.nama_folder) == True):
 
         #fungsi batchbangun
         elif role == "bandung_bondowoso" and masukkan == "batchbangun": 
-            (bahan_bangunan, candi, jumlah_jin, jumlah_jin_dipakai, pasir, batu, air, status_bangun, isCandiOver) = Batch_bangun(users, candi, bahan_bangunan)
+            (bahan_bangunan, candi, jumlah_jin, pasir, batu, air, status_bangun, isCandiOver) = Batch_bangun(users, candi, bahan_bangunan)
             if jumlah_jin == 0: 
                 print("Bangun gagal. Anda tidak punya jin pembangun. Silahkan summon terlebih dahulu.")
             else: 
                 if status_bangun == True: 
-                    if (pasir == 5 and batu == 5 and air == 5) and isCandiOver == True: 
+                    if isCandiOver == True: 
                         print("Bangun berhasil")
                     else: 
-                        print(f"Mengerahkan {jumlah_jin_dipakai} jin untuk membangun candi dengan total bahan {pasir} pasir, {batu} batu, {air} air")
+                        print(f"Mengerahkan {jumlah_jin} jin untuk membangun candi dengan total bahan {pasir} pasir, {batu} batu, {air} air")
                 else:
                     if isCandiOver == True: 
                         print("Bangun gagal")
                     else:
                         print(f"Bangun gagal. Kurang {pasir} pasir, {batu} batu, {air} air ") 
-
-                        
+              
         #fungsi laporan jin 
         elif role == "bandung_bondowoso" and masukkan == "laporanjin": 
-            jumlahJin, pasir, batu, air = LaporanJin(users)
-            print(f"Jumlah jin: {jumlahJin}")
-            print(f"Total pasir: {pasir}")
-            print(f"Total batu: {batu}")
-            print(f"Total air: {air}")
+            jumlahJin, jumlahJinPembangun, jumlahJinPengumpul, pasir, batu, air, jinMalas, jinRajin = LaporanJin(users, bahan_bangunan, candi)
+            print_laporan_jin(jumlahJin, jumlahJinPembangun, jumlahJinPengumpul, pasir, batu, air, jinMalas, jinRajin)
+
 
         #fungsi laporan candi
         elif role == "bandung_bondowoso" and masukkan == "laporancandi": 
@@ -153,11 +152,11 @@ elif(os.path.isdir(args.nama_folder) == True):
             save(folder, users, 'user.csv')
             save(folder, candi, 'candi.csv')
             save(folder, bahan_bangunan, 'bahan_bangunan.csv')
-
+            print(f"Menyimpan folder di {folder}...")
         #fungsi exit
         elif masukkan == "exit": 
             Exit(users, candi, bahan_bangunan)
-
+            print(f"Menyimpan folder di {path}...")
         #buat debugging
         elif masukkan == "user": 
             print(array_eff_None(users))

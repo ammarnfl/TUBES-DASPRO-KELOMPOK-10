@@ -39,3 +39,4 @@ def save(path : str,  arr : list, namefile: str):
             f.write("\n")
             i += 1
         f.close()
+

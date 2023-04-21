@@ -71,3 +71,12 @@ def array_to_None(list : list, index : int) -> list:
         list[index][i] = ""
         Appends(list, Mark)
     return list
+
+def Absolute(number : int) -> int: 
+    if number < 0: 
+        number = number * (-1)
+        return number
+    elif number > 0: 
+        return number
+    else: 
+        return 0

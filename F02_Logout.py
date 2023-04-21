@@ -1,7 +1,7 @@
 from F01_Login import *
 
 
-def Logout(): 
+def Logout(status_login : bool) -> list: 
     if Login_status() == True:
         print("Berhasil logout dari akun")
         return ""

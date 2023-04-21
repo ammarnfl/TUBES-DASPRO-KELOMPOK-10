@@ -9,6 +9,7 @@ def Jin_Pembangun(array_of_candi : list, array_of_material : list, jin_pembangun
     air = randrange(1,5)
     if Len(array_of_material) == 1: 
         print("Material tidak cukup")
+
     else: 
         i = 0
         # Mengecek material cukup atau tidak 
@@ -33,19 +34,20 @@ def Jin_Pembangun(array_of_candi : list, array_of_material : list, jin_pembangun
                     array_of_material[i][2] = str(int(array_of_material[i][2]) - air)
                     status_air = True
             i += 1
-        print(status_air, status_batu, status_pasir)
         #membangun candi jika material cukup
     if status_air == True and status_batu == True and status_pasir == True:
         #jumlah candi 
-        count_candi = 1
-        for i in range(1, Len(array_of_candi)): 
+        count_candi = 0
+        for i in range(Len(array_of_candi)): 
             if Len(array_of_candi[i]) != 1: 
                 count_candi += 1
-        print("Candi berhasil dibangun")
+        
         if count_candi == 101: 
             print("Candi berhasil dibangun")
+            print(f"Sisa candi yang perlu dibangun: {101-count_candi}\n")
         else: 
-            print(f"Sisa candi yang perlu dibangun: {100-count_candi}")
+            print("Candi berhasil dibangun")
+            print(f"Sisa candi yang perlu dibangun: {101-count_candi}\n")
             j = 0
             status_bangun = False
             while Marking(array_of_candi[j]) == False:
@@ -62,6 +64,7 @@ def Jin_Pembangun(array_of_candi : list, array_of_material : list, jin_pembangun
                     candi = [str(count_candi), jin_pembangun, str(pasir), str(batu), str(air), Mark]
                     Appends(array_of_candi, candi)
     else: 
+
         print("Bahan bangunan tidak mencukupi")
-        print("Candi tidak bisa dibangun!")
+        print("Candi tidak bisa dibangun!\n")
     return array_of_candi, array_of_material

@@ -1,8 +1,7 @@
-import csv 
-from OurFunction import *
+
 from Z1_ListFunction import *
 
-def ubah_jin(array_of_user : list):
+def ubah_jin(array_of_user : list) -> list:
     isUsernameExist = False
     username = input("Masukkkan username Jin: ")
     #check username ada atau tidak 
