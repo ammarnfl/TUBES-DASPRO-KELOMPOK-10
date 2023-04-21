@@ -89,9 +89,9 @@ def Batch_bangun(array_of_user : list, array_of_candi : list, array_of_material 
         #mengurangi bahan
         jumlahJinDipakai = 0
         for i in range(count):
-            pasir_needed = array_of_material_needed[i][0]
-            batu_needed = array_of_material_needed[i][1]
-            air_needed = array_of_material_needed[i][2]
+            pasir_needed = int(array_of_material_needed[i][0])
+            batu_needed = int(array_of_material_needed[i][1])
+            air_needed = int(array_of_material_needed[i][2])
 
             pasir_have = int(array_of_material[1][2])
             (array_of_material[1][2]) = str(pasir_have - pasir_needed)
