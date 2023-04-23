@@ -5,14 +5,14 @@ def Summonjin(array_of_user : list) -> list:
     print("(1) Pengumpul - Bertugas mengumpulkan bahan bangunan")
     print("(2) Pembangun - Bertugas membangun candi")
     while True: 
-        role = "jin_pengumpul"
         jin = (input("Masukkan nomor jenis jin yang ingin dipanggil: "))
         #jin pengumpul
         if jin == "1": 
+            role = "jin_pengumpul"            
             print('Memilih jenis jin "Pengumpul"')
             username = input("Masukkan username jin: ")
             while isUsernameExist(username, array_of_user) == True: 
-                print(f"username {username} sudah diambil")
+                print(f'Username "{username}"" sudah diambil')
                 username = input("Masukkan username jin: ")
 
             if isUsernameExist(username, array_of_user) == False: 
@@ -28,12 +28,16 @@ def Summonjin(array_of_user : list) -> list:
                     else:
                         print("Password panjangnya harus 5-25 karakter!")
                 break 
-                      
+                   
         #jin pembangun
         elif jin == "2": 
             role = "jin_pembangun"
             print('Memilih jenis jin "Pembangun"')
             username = input("Masukkan username jin: ")
+            while isUsernameExist(username, array_of_user) == True: 
+                print(f'Username "{username}"" sudah diambil')
+                username = input("Masukkan username jin: ")
+
             if isUsernameExist(username, array_of_user) == False: 
                 while True:
                     password = input("Masukkan password jin: ")
@@ -47,9 +51,6 @@ def Summonjin(array_of_user : list) -> list:
                     else:
                         print("Password panjangnya harus 5-25 karakter!")
                 break 
-            else: 
-                print(f'Username "{username}" sudah diambil')
-            break
         else: 
             print(f'Tidak ada jenis jin bernomor "{jin}"!')
     return array_of_user
