@@ -28,8 +28,6 @@ def Summonjin(array_of_user : list) -> list:
                     else:
                         print("Password panjangnya harus 5-25 karakter!")
                 break 
-            else: 
-                print(f'Username "{username}"" sudah diambil')
                       
         #jin pembangun
         elif jin == "2": 
