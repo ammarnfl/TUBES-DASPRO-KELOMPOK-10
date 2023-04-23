@@ -11,6 +11,9 @@ def Summonjin(array_of_user : list) -> list:
         if jin == "1": 
             print("memilih jin pengumpul.")
             username = input("Masukkan username jin: ")
+            while isUsernameExist(username, array_of_user) == True: 
+                print(f"username {username} sudah diambil")
+                username = input("Masukkan username jin: ")
 
             if isUsernameExist(username, array_of_user) == False: 
                 while True:
@@ -21,8 +24,6 @@ def Summonjin(array_of_user : list) -> list:
                     else:
                         print("Password panjangnya harus 5-25 karakter!")
                 break 
-            else: 
-                print(f"username {username} sudah diambil")
                       
         #jin pembangun
         elif jin == "2": 

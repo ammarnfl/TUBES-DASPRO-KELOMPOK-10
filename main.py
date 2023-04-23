@@ -75,7 +75,6 @@ elif(os.path.isdir(args.nama_folder) == True):
         #fungsi summonjin
         elif role == "bandung_bondowoso" and masukkan == "summonjin": 
             totalJin = summoned_jin(users)
-            print(totalJin)
             if totalJin < 100: 
                 print(f"Tersisa {100-totalJin} lagi bisa disummon")
                 Summonjin(users)
