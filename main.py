@@ -75,11 +75,12 @@ elif(os.path.isdir(args.nama_folder) == True):
         #fungsi summonjin
         elif role == "bandung_bondowoso" and masukkan == "summonjin": 
             totalJin = summoned_jin(users)
+            print(f'Jumlah jin saat ini: {totalJin}')
             if totalJin < 100: 
-                print(f"Tersisa {100-totalJin} lagi bisa disummon")
+                print(f"Tersisa {100-totalJin} jin yang bisa dipanggil")
                 Summonjin(users)
             else: 
-                print("tidak bisa summonjin lagi")
+                print("Jumlah Jin telah maksimal! (100 jin)\nBandung tidak dapat men-summon lebih dari itu")
 
         #fungsi hapus jin
         elif role == "bandung_bondowoso" and masukkan == "hapusjin": 
@@ -154,6 +155,7 @@ elif(os.path.isdir(args.nama_folder) == True):
         elif masukkan == "save": 
             parent = "data"
             folderpath = input("Masukkan nama folder: ")
+            print("\nSaving...\n")
             folder = parent + "/" + folderpath
             save(folder, users, 'user.csv')
             save(folder, candi, 'candi.csv')
