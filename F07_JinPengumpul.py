@@ -3,9 +3,9 @@ from random import *
 from Z1_ListFunction import *
 
 def CollectMaterial(array_of_material : list) -> list:
-    pasir = randrange(1,5)
-    batu = randrange(1,5)
-    air = randrange(1,5)
+    pasir = randrange(0,5)
+    batu = randrange(0,5)
+    air = randrange(0,5)
     array_pasir = ['pasir', 'PerluNih!', str(pasir), Mark]
     array_batu = ['batu', 'KerasCuy', str(batu), Mark]
     array_air = ['air', 'Enak nih diminum', str(air), Mark]

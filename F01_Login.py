@@ -1,7 +1,4 @@
-import csv 
-from OurFunction import *
 from Z1_ListFunction import *
-
 
 def Login(username : str, password : str, array_of_user : list) -> str:
     global login_status
@@ -20,19 +17,19 @@ def Login(username : str, password : str, array_of_user : list) -> str:
         i += 1
     # Check username ada atau tidak 
     if array_of_user[i] == Mark: 
-        print("Username tidak terdaftar!")
+        print("\nUsername tidak terdaftar!")
         role = ""
         return role
     else:
         #jika username ada check password ada atau tidak 
         #password salah masuk sini
         if login_status == False: 
-            print("Password salah!")
+            print("\nPassword salah!")
             role = ""
             return role
         #password benar masuk sini
         else: 
-            print(f"Selamat datang, {username}")
+            print(f"\nSelamat datang, {username}!")
             print('Masukkan command "help" untuk daftar command yang dapat kamu panggil')
             return role
         

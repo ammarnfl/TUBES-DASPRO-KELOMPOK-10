@@ -1,26 +1,23 @@
 from Z1_ListFunction import *
 
 def HancurkanCandi(array_of_candi : list, id_candi : str) -> str:
-    isUsernameExist = False
-
+    isIDexist = False
     #check id ada atau tidak
     i = 0
     while Marking(array_of_candi[i]) == False:
         if array_of_candi[i][0] == id_candi:
-            isUsernameExist = True
+            isIDexist = True
             break
         i += 1
+
+    if isIDexist == True: 
+        choice = input(f"Apakah anda yakin ingin menghancurkan\n candi ID: {id_candi} (Y/N) ")
+        if choice == 'Y' or choice == 'y': 
+            array_of_candi[int(id_candi)] = ['', Mark]
+        elif choice == 'N' or choice == 'n': 
+            pass
+    else: 
+        print("Tidak ada candi dengan ID tersebut\n")
     
     #kondisi jika id ditemukan
-    if isUsernameExist == True:
-        choice = input(f"Apakah anda yakin ingin menghancurkan candi ID: {id_candi} (Y/N)?")
-        if choice == 'Y' or choice == 'y':
-            index = get_element_matriks(array_of_candi, id_candi)
-            array_to_None(array_of_candi, index)
-            print("Candi telah berhasil dihancurkan.")
-        elif choice == 'N' or choice == 'n':
-            print("Yah gajadi dihancurin.")
-    else:
-        print("Tidak ada candi dengan ID tersebut.")
-
     return array_of_candi

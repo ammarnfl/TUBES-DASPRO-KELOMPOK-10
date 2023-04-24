@@ -3,12 +3,13 @@ from Z1_ListFunction import *
 
 def save(path : str,  arr : list, namefile: str):
     if not os.path.exists(path):
-        print("ga ada foldernya")
+        print("\nFolder tidak ditemukan\n")
         os.makedirs(path)
         f = open(os.path.join(path, namefile), 'w')
         f.close()
         f = open(os.path.join(path, namefile), 'w')
         i = 0
+        
         while arr[i] != Mark:
             j = 0
             while arr[i][j] != Mark:
@@ -20,12 +21,7 @@ def save(path : str,  arr : list, namefile: str):
             f.write("\n")
             i += 1
         f.close()
-        
-        print(f"Membuat folder {path}...")          
-
-
-
-            
+        print(f"Membuat folder di {path}...")
 
     else:
         f =  open(os.path.join(path, namefile), 'w')
@@ -43,3 +39,4 @@ def save(path : str,  arr : list, namefile: str):
             f.write("\n")
             i += 1
         f.close()
+
