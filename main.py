@@ -164,7 +164,6 @@ elif(os.path.isdir(args.nama_folder) == True):
         #fungsi exit
         elif masukkan == "exit": 
             Exit(users, candi, bahan_bangunan)
-            print(f"Menyimpan folder di {path}...")
         #buat debugging
         elif masukkan == "user": 
             print(array_eff_None(users))
@@ -179,7 +178,7 @@ elif(os.path.isdir(args.nama_folder) == True):
                     count_candi += 1
             print(count_candi)
         else: 
-            print('Input tidak sesuai ketik "help" jika tidak tau command')
+            print('Input tidak sesuai\nKetik "help" untuk tahu command yang bisa digunakan')
 
 elif(os.path.isdir(args.nama_folder) == False):
     print(f'\nFolder "{args.nama_folder}" tidak ditemukan.') 

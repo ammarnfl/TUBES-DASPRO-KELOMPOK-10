@@ -10,9 +10,9 @@ def Exit(array_of_user : list, array_of_candi :list , array_of_material : list):
         parent = "data"
         folderpath = input("Masukkan nama folder: ")
         folder = parent + "/" + folderpath
-
+        print("\nSaving...\n")
         save(folder, array_of_user, 'user.csv')
         save(folder, array_of_candi, 'candi.csv')
         save(folder, array_of_material, 'bahan_bangunan.csv')
-        
+        print(f"Menyimpan folder di {folder}...")
     exit()
