@@ -40,11 +40,12 @@ if args.nama_folder == None:
     print("Usage: python main.py <nama_folder>")
     exit()
 elif(os.path.isdir(args.nama_folder) == True): 
+    #load semua file csv ke dalam array 
     load(args.nama_folder, 'user.csv', users)
     load(args.nama_folder, 'candi.csv', candi)
     load(args.nama_folder, 'bahan_bangunan.csv', bahan_bangunan)
 
-    #print(array_eff_None(users))
+ 
     print("\nLoading...\n")
     print("\n=========== WELCOME ===========\n\n")
     print('Selamat datang di program "Manajerial candi"')
@@ -58,7 +59,7 @@ elif(os.path.isdir(args.nama_folder) == True):
         #fungsi login 
         if masukkan == "login": 
             if role != "": 
-                print(f"Login gagal!\nAnda telah melakukan login dengan username {Username}, silahkan lakukan 'logout' sebelum melakukan login kembali")
+                print(f'Login gagal!\nAnda telah melakukan login dengan username {Username}, silahkan lakukan "logout" sebelum melakukan login kembali')
             while role == "":
                 Username = input("Username: ")
                 Password = input("Password: ")
@@ -109,7 +110,6 @@ elif(os.path.isdir(args.nama_folder) == True):
             else: 
                 print(f"Mengerahkan {jumlah_jin_pengumpul} untuk mengumpulkan bahan ")
                 print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
-
         #fungsi batchbangun
         elif role == "bandung_bondowoso" and masukkan == "batchbangun": 
             (bahan_bangunan, candi, jumlah_jin, pasir, batu, air, status_bangun, isCandiOver) = Batch_bangun(users, candi, bahan_bangunan)
@@ -164,7 +164,6 @@ elif(os.path.isdir(args.nama_folder) == True):
         #fungsi exit
         elif masukkan == "exit": 
             Exit(users, candi, bahan_bangunan)
-            print(f"Menyimpan folder di {path}...")
         #buat debugging
         elif masukkan == "user": 
             print(array_eff_None(users))
@@ -178,6 +177,8 @@ elif(os.path.isdir(args.nama_folder) == True):
                 if Len(candi[i]) != 1: 
                     count_candi += 1
             print(count_candi)
+        else: 
+            print('Input tidak sesuai\nKetik "help" untuk tahu command yang bisa digunakan')
 
 elif(os.path.isdir(args.nama_folder) == False):
     print(f'\nFolder "{args.nama_folder}" tidak ditemukan.') 
