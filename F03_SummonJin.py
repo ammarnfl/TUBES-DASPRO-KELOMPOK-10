@@ -1,14 +1,14 @@
 from Z1_ListFunction import *
 
 def Summonjin(array_of_user : list) -> list: 
-    print("Jenis jin yang dapat dipanggil: ")
+    print("\nJenis jin yang dapat dipanggil: ")
     print("(1) Pengumpul - Bertugas mengumpulkan bahan bangunan")
     print("(2) Pembangun - Bertugas membangun candi")
     while True: 
         role = "jin_pengumpul"
-        jin = int(input("Masukkan nomor jenis jin yang ingin dipanggil: "))
+        jin = (input("Masukkan nomor jenis jin yang ingin dipanggil: "))
         #jin pengumpul
-        if jin == 1: 
+        if jin == "1": 
             print("memilih jin pengumpul.")
             username = input("Masukkan username jin: ")
 
@@ -25,7 +25,7 @@ def Summonjin(array_of_user : list) -> list:
                 print(f"username {username} sudah diambil")
                       
         #jin pembangun
-        elif jin == 2: 
+        elif jin == "2": 
             role = "jin_pembangun"
             print("memilih jin pembangun.")
             username = input("Masukkan username jin: ")
@@ -59,5 +59,8 @@ def check_password(password : str) -> bool:
     return False
 
 def summoned_jin(arr : list) -> int: 
-    countjin = Len(arr) - 3
+    countjin = 0
+    for i in range(Len(arr)): 
+        if arr[i][2] == 'jin_pembangun' or arr[i][2] == 'jin_pengumpul': 
+            countjin += 1
     return countjin

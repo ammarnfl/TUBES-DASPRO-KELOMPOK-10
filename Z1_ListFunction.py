@@ -1,4 +1,4 @@
-Neff = 120
+Neff = 150
 Mark = -9999
 arr = [None for i in range(Neff)]
 arr[0] = Mark
@@ -65,3 +65,18 @@ def Remove(array : list, index : int) -> list:
         elif i > index: 
             newarr = Appends(newarr, array[i])      
     return newarr
+
+def array_to_None(list : list, index : int) -> list:
+    for i in range (5):
+        list[index][i] = ""
+        Appends(list, Mark)
+    return list
+
+def Absolute(number : int) -> int: 
+    if number < 0: 
+        number = number * (-1)
+        return number
+    elif number > 0: 
+        return number
+    else: 
+        return 0

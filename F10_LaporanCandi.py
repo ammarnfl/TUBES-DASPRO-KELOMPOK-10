@@ -39,7 +39,6 @@ def LaporanCandi(array_of_candi: list) -> str:
             hargaCandi = hargaPasir * pasirCandi + hargaBatu * batuCandi + airCandi *  hargaAir
             Array_of_hargaCandi = Appends(Array_of_hargaCandi, hargaCandi) 
             j += 1
-        print(Array_of_hargaCandi)  
         #mencari nilai maks dan min dari sebuah candi
         MaksHargaCandi = Array_of_hargaCandi[0]
         MinsHargaCandi = Array_of_hargaCandi[0]
@@ -55,3 +54,10 @@ def LaporanCandi(array_of_candi: list) -> str:
         Total_candi = 0
         return Total_candi, Total_pasir, Total_batu, Total_air, ID_Candi_termahal, ID_Candi_termurah, MaksHargaCandi, MinsHargaCandi
 
+def print_laporan_candi(totalCandi : str, totalPasir : str, totalBatu : str, totalAir :str, candiTermahal :str,  HargaTermahal : str, candiTermurah : str, HargaTermurah : str) -> str:
+    print(f"\nTotal Candi: {totalCandi} ")
+    print(f"Total Pasir yang digunakan: {totalPasir}")
+    print(f"Total Batu yang digunakan: {totalBatu}")
+    print(f"Total Air yang digunakan: {totalAir}")
+    print(f"ID Candi Termahal: {candiTermahal} (Rp{HargaTermahal})")
+    print(f"ID Candi Termurah: {candiTermurah} (Rp{HargaTermurah})\n")
