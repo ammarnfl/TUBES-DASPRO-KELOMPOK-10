@@ -40,11 +40,12 @@ if args.nama_folder == None:
     print("Usage: python main.py <nama_folder>")
     exit()
 elif(os.path.isdir(args.nama_folder) == True): 
+    #load semua file csv ke dalam array 
     load(args.nama_folder, 'user.csv', users)
     load(args.nama_folder, 'candi.csv', candi)
     load(args.nama_folder, 'bahan_bangunan.csv', bahan_bangunan)
 
-    #print(array_eff_None(users))
+ 
     print("\nLoading...\n")
     print("\n=========== WELCOME ===========\n\n")
     print('Selamat datang di program "Manajerial candi"')
@@ -58,7 +59,7 @@ elif(os.path.isdir(args.nama_folder) == True):
         #fungsi login 
         if masukkan == "login": 
             if role != "": 
-                print(f"Login gagal!\nAnda telah melakukan login dengan username {Username}, silahkan lakukan 'logout' sebelum melakukan login kembali")
+                print(f'Login gagal!\nAnda telah melakukan login dengan username {Username}, silahkan lakukan "logout" sebelum melakukan login kembali')
             while role == "":
                 Username = input("Username: ")
                 Password = input("Password: ")
@@ -75,12 +76,12 @@ elif(os.path.isdir(args.nama_folder) == True):
         #fungsi summonjin
         elif role == "bandung_bondowoso" and masukkan == "summonjin": 
             totalJin = summoned_jin(users)
-            print(totalJin)
+            print(f'Jumlah jin saat ini: {totalJin}')
             if totalJin < 100: 
-                print(f"Tersisa {100-totalJin} lagi bisa disummon")
+                print(f"Tersisa {100-totalJin} jin yang bisa dipanggil")
                 Summonjin(users)
             else: 
-                print("tidak bisa summonjin lagi")
+                print("Jumlah Jin telah maksimal! (100 jin)\nBandung tidak dapat men-summon lebih dari itu")
 
         #fungsi hapus jin
         elif role == "bandung_bondowoso" and masukkan == "hapusjin": 
@@ -109,7 +110,6 @@ elif(os.path.isdir(args.nama_folder) == True):
             else: 
                 print(f"Mengerahkan {jumlah_jin_pengumpul} untuk mengumpulkan bahan ")
                 print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
-
         #fungsi batchbangun
         elif role == "bandung_bondowoso" and masukkan == "batchbangun": 
             (bahan_bangunan, candi, jumlah_jin, pasir, batu, air, status_bangun, isCandiOver) = Batch_bangun(users, candi, bahan_bangunan)
@@ -155,6 +155,7 @@ elif(os.path.isdir(args.nama_folder) == True):
         elif masukkan == "save": 
             parent = "data"
             folderpath = input("Masukkan nama folder: ")
+            print("\nSaving...\n")
             folder = parent + "/" + folderpath
             save(folder, users, 'user.csv')
             save(folder, candi, 'candi.csv')
@@ -163,7 +164,6 @@ elif(os.path.isdir(args.nama_folder) == True):
         #fungsi exit
         elif masukkan == "exit": 
             Exit(users, candi, bahan_bangunan)
-            print(f"Menyimpan folder di {path}...")
         #buat debugging
         elif masukkan == "user": 
             print(array_eff_None(users))
@@ -177,6 +177,8 @@ elif(os.path.isdir(args.nama_folder) == True):
                 if Len(candi[i]) != 1: 
                     count_candi += 1
             print(count_candi)
+        else: 
+            print('Input tidak sesuai\nKetik "help" untuk tahu command yang bisa digunakan')
 
 elif(os.path.isdir(args.nama_folder) == False):
     print(f'\nFolder "{args.nama_folder}" tidak ditemukan.') 

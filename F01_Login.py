@@ -1,6 +1,5 @@
 from Z1_ListFunction import *
 
-
 def Login(username : str, password : str, array_of_user : list) -> str:
     global login_status
     login_status = False

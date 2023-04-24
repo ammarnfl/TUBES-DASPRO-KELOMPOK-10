@@ -5,46 +5,56 @@ def Summonjin(array_of_user : list) -> list:
     print("(1) Pengumpul - Bertugas mengumpulkan bahan bangunan")
     print("(2) Pembangun - Bertugas membangun candi")
     while True: 
-        role = "jin_pengumpul"
         jin = (input("Masukkan nomor jenis jin yang ingin dipanggil: "))
         #jin pengumpul
         if jin == "1": 
-            print("memilih jin pengumpul.")
+            role = "jin_pengumpul"            
+            print('Memilih jenis jin "Pengumpul"')
             username = input("Masukkan username jin: ")
+            while isUsernameExist(username, array_of_user) == True: 
+                print(f'Username "{username}" sudah diambil')
+                username = input("Masukkan username jin: ")
 
             if isUsernameExist(username, array_of_user) == False: 
                 while True:
                     password = input("Masukkan password jin: ")
                     if check_password(password) == True: 
                         array_of_user = Appends(array_of_user, [username, password, role, Mark])
+                        print("\nHocus Pocus!!!")
+                        print("Simsalabim!!!")
+                        print("Duarrrr!!!\n")
+                        print(f'Jin "{username}" berhasil dipanggil!')
                         break
                     else:
                         print("Password panjangnya harus 5-25 karakter!")
                 break 
-            else: 
-                print(f"username {username} sudah diambil")
-                      
+                   
         #jin pembangun
         elif jin == "2": 
             role = "jin_pembangun"
-            print("memilih jin pembangun.")
+            print('Memilih jenis jin "Pembangun"')
             username = input("Masukkan username jin: ")
+            while isUsernameExist(username, array_of_user) == True: 
+                print(f'Username "{username}" sudah diambil')
+                username = input("Masukkan username jin: ")
+
             if isUsernameExist(username, array_of_user) == False: 
                 while True:
                     password = input("Masukkan password jin: ")
                     if check_password(password) == True: 
                         array_of_user = Appends(array_of_user, [username, password, role, Mark])
+                        print("\nHocus Pocus!!!")
+                        print("Simsalabim!!!")
+                        print("Duarrrr!!!\n")
+                        print(f'Jin "{username}" berhasil dipanggil!')
                         break
                     else:
                         print("Password panjangnya harus 5-25 karakter!")
                 break 
-            else: 
-                print(f"username {username} sudah diambil")
-            break
         else: 
-            print(f"tidak ada jenis jin bernomor {jin}!")
+            print(f'Tidak ada jenis jin bernomor "{jin}"!')
     return array_of_user
-       
+
 def isUsernameExist(username : str, array_of_user : list) -> bool: 
     i = 0
     while array_of_user[i] != Mark: 
