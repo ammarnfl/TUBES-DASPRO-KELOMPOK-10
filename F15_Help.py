@@ -1,4 +1,4 @@
-
+from F01_Login import *
 def Help(role : str) -> str:
     if role == "":
         print("\n=========== HELP ===========\n")
@@ -39,9 +39,6 @@ def Help(role : str) -> str:
             print("untuk keluar dari akun yang digunakan sekarang")
             print("2. jinpembangun")
             print("membangun candi")
-        elif role == "jin_pengumpul":
-            print("=========== HELP ===========")
-            print("untuk menyelesaikan permainan")
         elif role == "jin_pembangun":
             print("\n=========== HELP ===========\n")
             print("1. logout")
