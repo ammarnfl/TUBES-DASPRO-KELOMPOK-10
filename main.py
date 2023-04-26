@@ -74,79 +74,107 @@ elif(os.path.isdir(args.nama_folder) == True):
                 print("\nLogout gagal!\nAnda belum login, silahkan login terlebih dahulu sebelum melakukan logout") 
 
         #fungsi summonjin
-        elif role == "bandung_bondowoso" and masukkan == "summonjin": 
-            totalJin = summoned_jin(users)
-            print(f'Jumlah jin saat ini: {totalJin}')
-            if totalJin < 100: 
-                print(f"Tersisa {100-totalJin} jin yang bisa dipanggil")
-                Summonjin(users)
-            else: 
-                print("Jumlah Jin telah maksimal! (100 jin)\nBandung tidak dapat men-summon lebih dari itu")
+        elif masukkan == "summonjin": 
+            if role == "bandung_bondowoso":
+                totalJin = summoned_jin(users)
+                print(f'Jumlah jin saat ini: {totalJin}')
+                if totalJin < 100: 
+                    print(f"Tersisa {100-totalJin} jin yang bisa dipanggil")
+                    Summonjin(users)
+                else: 
+                    print("Jumlah Jin telah maksimal! (100 jin)\nBandung tidak dapat men-summon lebih dari itu")
 
         #fungsi hapus jin
-        elif role == "bandung_bondowoso" and masukkan == "hapusjin": 
-            username_jin = input("Masukkan username jin: ")
-            users = HapusJin(users, username_jin)
-            candi = HapusJinCandi(candi, username_jin)
+        elif masukkan == "hapusjin":
+            if role == "bandung_bondowoso":
+                username_jin = input("Masukkan username jin: ")
+                users = HapusJin(users, username_jin)
+                candi = HapusJinCandi(candi, username_jin)
+            else: 
+                print('Maaf, perintah "hapusjin" hanya bisa dilakukan Bandung Bondowoso')
 
-        #fungsi ubah tipe jin
-        elif role == "bandung_bondowoso" and masukkan == "ubahjin": 
-            ubah_jin(users)
+        elif masukkan == "ubahjin":
+            if role == "bandung_bondowoso":
+                ubah_jin(users)
+            else: 
+                print('Maaf, perintah "ubahjin" hanya bisa dilakukan Bandung Bondowoso')
 
         #fungsi bangun
-        elif role == "jin_pembangun" and masukkan == "bangun": 
-            (candi, bahan_bangunan) = Jin_Pembangun(candi, bahan_bangunan, Username)
+        elif  masukkan == "bangun": 
+            if role == "jin_pembangun": 
+                (candi, bahan_bangunan) = Jin_Pembangun(candi, bahan_bangunan, Username)
+            else: 
+                print('Maaf, perintah "bangun" hanya bisa dilakukan jin pembangun')
 
         #fungsi kumpul
-        elif role == "jin_pengumpul" and masukkan == "kumpul":
-            (bahan_bangunan, pasir, batu, air) = CollectMaterial(bahan_bangunan)
-            print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
-
-        #fungsi batchkumpul
-        elif role == "bandung_bondowoso" and masukkan == "batchkumpul":  
-            (bahan_bangunan, jumlah_jin_pengumpul, pasir, batu, air) = Batch_kumpul(users, bahan_bangunan)
-            if jumlah_jin_pengumpul == 0: 
-                print("Kumpul gagal. Anda tidak memiliki jin pengumpul, summonjin pengumpul terlebih dahulu")
-            else: 
-                print(f"Mengerahkan {jumlah_jin_pengumpul} untuk mengumpulkan bahan ")
+        elif masukkan == "kumpul": 
+            if role == "jin_pengumpul":
+                (bahan_bangunan, pasir, batu, air) = CollectMaterial(bahan_bangunan)
                 print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
-        #fungsi batchbangun
-        elif role == "bandung_bondowoso" and masukkan == "batchbangun": 
-            (bahan_bangunan, candi, jumlah_jin, pasir, batu, air, status_bangun, isCandiOver) = Batch_bangun(users, candi, bahan_bangunan)
-            if jumlah_jin == 0: 
-                print("Bangun gagal. Anda tidak punya jin pembangun. Silahkan summon terlebih dahulu.")
             else: 
-                if status_bangun == True: 
-                    if isCandiOver == True: 
-                        print("Bangun berhasil")
-                    else: 
-                        print(f"Mengerahkan {jumlah_jin} jin untuk membangun candi dengan total bahan {pasir} pasir, {batu} batu, {air} air")
-                else:
-                    if isCandiOver == True: 
-                        print("Bangun gagal")
+                print('Maaf, perintah "kumpul" hanya bisa dilakukan jin pengumpul')
+        #fungsi batchkumpul
+
+        elif masukkan == "batchkumpul":  
+            if role == "bandung_bondowoso": 
+                (bahan_bangunan, jumlah_jin_pengumpul, pasir, batu, air) = Batch_kumpul(users, bahan_bangunan)
+                if jumlah_jin_pengumpul == 0: 
+                    print("Kumpul gagal. Anda tidak memiliki jin pengumpul, summonjin pengumpul terlebih dahulu")
+                else: 
+                    print(f"Mengerahkan {jumlah_jin_pengumpul} untuk mengumpulkan bahan ")
+                    print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
+            else: 
+                print('Maaf, perintah "batchkumpul" hanya bisa dilakukan oleh bandung bondowoso')
+        #fungsi batchbangun
+        elif masukkan == "batchbangun": 
+            if role == "bandung_bondowoso": 
+                (bahan_bangunan, candi, jumlah_jin, pasir, batu, air, status_bangun, isCandiOver) = Batch_bangun(users, candi, bahan_bangunan)
+                if jumlah_jin == 0: 
+                    print("Bangun gagal. Anda tidak punya jin pembangun. Silahkan summon terlebih dahulu.")
+                else: 
+                    if status_bangun == True: 
+                        if isCandiOver == True: 
+                            print("Bangun berhasil")
+                        else: 
+                            print(f"Mengerahkan {jumlah_jin} jin untuk membangun candi dengan total bahan {pasir} pasir, {batu} batu, {air} air")
                     else:
-                        print(f"Bangun gagal. Kurang {pasir} pasir, {batu} batu, {air} air ") 
+                        if isCandiOver == True: 
+                            print("Bangun gagal")
+                        else:
+                            print(f"Bangun gagal. Kurang {pasir} pasir, {batu} batu, {air} air ")
+            else: 
+                print('Maaf, perintah "batchbangun" hanya bisa dilakukan oleh bandung bondowoso')
               
         #fungsi laporan jin 
-        elif role == "bandung_bondowoso" and masukkan == "laporanjin": 
-            jumlahJin, jumlahJinPembangun, jumlahJinPengumpul, pasir, batu, air, jinMalas, jinRajin = LaporanJin(users, bahan_bangunan, candi)
-            print_laporan_jin(jumlahJin, jumlahJinPembangun, jumlahJinPengumpul, pasir, batu, air, jinMalas, jinRajin)
-
+        elif masukkan == "laporanjin": 
+            if role == "bandung_bondowoso":
+                jumlahJin, jumlahJinPembangun, jumlahJinPengumpul, pasir, batu, air, jinMalas, jinRajin = LaporanJin(users, bahan_bangunan, candi)
+                print_laporan_jin(jumlahJin, jumlahJinPembangun, jumlahJinPengumpul, pasir, batu, air, jinMalas, jinRajin)
+            else: 
+                print('Maaf, perintah "laporanjin" hanya bisa dilakukan oleh bandung bondowoso')
 
         #fungsi laporan candi
-        elif role == "bandung_bondowoso" and masukkan == "laporancandi": 
-            totalCandi, totalPasir, totalBatu, totalAir, candiTermahal, candiTermurah, HargaTermahal, HargaTermurah  = LaporanCandi(candi)
-            print_laporan_candi(totalCandi, totalPasir, totalBatu, totalAir, candiTermahal, HargaTermahal, candiTermurah, HargaTermurah )
-                
+        elif masukkan == "laporancandi": 
+            if role == "bandung_bondowoso":
+                totalCandi, totalPasir, totalBatu, totalAir, candiTermahal, candiTermurah, HargaTermahal, HargaTermurah  = LaporanCandi(candi)
+                print_laporan_candi(totalCandi, totalPasir, totalBatu, totalAir, candiTermahal, HargaTermahal, candiTermurah, HargaTermurah )
+            else: 
+                print('Maaf, perintah "laporancandi" hanya bisa dilakukan oleh bandung bondowoso')   
         #fungsi Roro Jonggrang
         #fungsi hancurkancandi
-        elif role == "roro_jonggrang" and masukkan == "hancurkancandi":
-            id_candi = input("Masukkan ID candi: ")
-            candi = HancurkanCandi(candi, id_candi)
+        elif masukkan == "hancurkancandi":
+            if role == "roro_jonggrang":
+                id_candi = input("Masukkan ID candi: ")
+                candi = HancurkanCandi(candi, id_candi)
+            else:
+                print('Maaf, perintah "hancurkancandi" hanya bisa dilakukan oleh Roro Jonggrang')
         
         #fungsi ayamberkokok
-        elif role == "roro_jonggrang" and masukkan == "ayamberkokok": 
-            AyamBerkokok(candi)
+        elif masukkan == "ayamberkokok": 
+            if role == "roro_jonggrang":
+                AyamBerkokok(candi)
+            else: 
+              print('Maaf, perintah "ayamberkokok" hanya bisa dilakukan oleh Roro Jonggrang')  
     
         elif masukkan == "help": 
             Help(role)
@@ -164,19 +192,6 @@ elif(os.path.isdir(args.nama_folder) == True):
         #fungsi exit
         elif masukkan == "exit": 
             Exit(users, candi, bahan_bangunan)
-        #buat debugging
-        elif masukkan == "user": 
-            print(array_eff_None(users))
-        elif masukkan == "bahan": 
-            print(array_eff_None(bahan_bangunan))
-        elif masukkan == "candi":
-            print(array_eff_None(candi))
-        elif masukkan == "jumlahcandi": 
-            count_candi = 0
-            for i in range(1, Len(candi)): 
-                if Len(candi[i]) != 1: 
-                    count_candi += 1
-            print(count_candi)
         else: 
             print('Input tidak sesuai\nKetik "help" untuk tahu command yang bisa digunakan')
 
