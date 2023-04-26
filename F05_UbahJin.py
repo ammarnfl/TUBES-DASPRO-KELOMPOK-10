@@ -31,9 +31,11 @@ def ubah_jin(array_of_user : list) -> list:
         #mengubah role dari jin_pembangun ke jin_pengumpul
         if choice == 'Y' and tipe == "Pembangun" and role != "": 
             role = "jin_pengumpul"
+            print(f'Berhasil ubah {username} ke tipe {tipe_opposite} ')
         #mengubah role dari jin_pengumpul ke jin_pengumpul
         if choice == 'Y' and tipe == "Pengumpul" and role != "":
             role = "jin_pembangun"
+            print(f'Berhasil ubah {username} ke tipe {tipe_opposite} ')
         array_of_user [i][2] = role
     else: 
         print("Tidak ada jin dengan username tersebut")

@@ -84,8 +84,6 @@ def JinTerajinArray(array_of_user : list, array_of_candi : list) -> list:
         #jumlah candi terbanyak dan paling sedikit
         Maks = int(array_jin_rajin[0][1])
         Mins = int(array_jin_rajin[Len(array_jin_rajin)-1][1])
-        print(array_jin_rajin[Len(array_jin_rajin)-1][0])
-
         
         #memasukkan nilai jin yang membangun paling banyak dengan nilai yang sama ke dalam array jin rajin
         jinRajin = [None for i in range(Neff)]
@@ -113,7 +111,6 @@ def JinTerajinArray(array_of_user : list, array_of_candi : list) -> list:
             for j in range(Len(jinMalas)- i -1): 
                 if jinMalas[j][0] < jinMalas[j+1][0]: 
                     jinMalas[j+1], jinMalas[j] = jinMalas[j], jinMalas[j+1]
-        print(jinMalas)
         #memasukkan jin pembangun yang mengubah ke jin pengumpul. Namun, sudan membangun candi
         jinTermalas = jinMalas[0][0]
         jinTerajin = jinRajin[0][0]
