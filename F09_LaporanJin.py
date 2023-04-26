@@ -117,15 +117,15 @@ def JinTerajinArray(array_of_user : list, array_of_candi : list) -> list:
     return jinTermalas, jinTerajin
 
 def print_laporan_jin(jumlahJin : str, jumlahJinPembangun : str, jumlahJinPengumpul : str, pasir : str, batu : str, air : str, jinTermalas : str, jinTerajin : str) -> str:      
-        print(f"\nJumlah jin: {jumlahJin}")
-        print(f"Jumlah jin pengumpul: {jumlahJinPengumpul}")
-        print(f"Jumlah jin pembangun: {jumlahJinPembangun}")
-        print(f"Jin Terajin: {jinTerajin}")
-        print(f"Jin Termalas: {jinTermalas}")
-        print(f"Total pasir: {pasir}")
-        print(f"Total batu: {batu}")
-        print(f"Total air: {air}")
-        print("\n")
+        print(f"\n> Jumlah jin: {jumlahJin}")
+        print(f"> Jumlah jin pengumpul: {jumlahJinPengumpul}")
+        print(f"> Jumlah jin pembangun: {jumlahJinPembangun}")
+        print(f"> Jin Terajin: {jinTerajin}")
+        print(f"> Jin Termalas: {jinTermalas}")
+        print(f"> Total pasir: {pasir} unit")
+        print(f"> Total batu: {batu} unit")
+        print(f"> Total air: {air} unit")
+        print("")
 
 
 
