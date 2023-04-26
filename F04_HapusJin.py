@@ -13,7 +13,7 @@ def HapusJin(array_of_user : list, username_jin : str) -> list:
     
     #kondisi jika username ditemukan atau tidak
     if isUsernameExist == True and (role == 'jin_pengumpul' or role == 'jin_pembangun'): 
-        choice = input(f'Apakah anda yakin ingin menghapus jin dengan username "{username_jin}" Y/N? ')
+        choice = input(f'Apakah anda yakin ingin menghapus jin dengan username "{username_jin}" (Y/N)? ')
         if choice == 'Y' or choice == 'y': 
             index = get_element_matriks(array_of_user, username_jin)
             array_of_user = Remove(array_of_user, index)
