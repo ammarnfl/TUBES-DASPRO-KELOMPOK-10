@@ -3,13 +3,13 @@ from Z1_ListFunction import *
 def Summonjin(array_of_user : list) -> list: 
     print("\nJenis jin yang dapat dipanggil: ")
     print("(1) Pengumpul - Bertugas mengumpulkan bahan bangunan")
-    print("(2) Pembangun - Bertugas membangun candi")
+    print("(2) Pembangun - Bertugas membangun candi\n")
     while True: 
         jin = (input("Masukkan nomor jenis jin yang ingin dipanggil: "))
         #jin pengumpul
         if jin == "1": 
             role = "jin_pengumpul"            
-            print('Memilih jenis jin "Pengumpul"')
+            print('\nMemilih jenis jin "Pengumpul"\n')
             username = input("Masukkan username jin: ")
             while isUsernameExist(username, array_of_user) == True: 
                 print(f'Username "{username}" sudah diambil')
@@ -32,7 +32,7 @@ def Summonjin(array_of_user : list) -> list:
         #jin pembangun
         elif jin == "2": 
             role = "jin_pembangun"
-            print('Memilih jenis jin "Pembangun"')
+            print('\nMemilih jenis jin "Pembangun"\n')
             username = input("Masukkan username jin: ")
             while isUsernameExist(username, array_of_user) == True: 
                 print(f'Username "{username}" sudah diambil')
@@ -46,13 +46,13 @@ def Summonjin(array_of_user : list) -> list:
                         print("\nHocus Pocus!!!")
                         print("Simsalabim!!!")
                         print("Duarrrr!!!\n")
-                        print(f'Jin "{username}" berhasil dipanggil!')
+                        print(f'Jin "{username}" berhasil dipanggil!\n')
                         break
                     else:
-                        print("Password panjangnya harus 5-25 karakter!")
+                        print("\nPanjang password harus 5-25 karakter!\n")
                 break 
         else: 
-            print(f'Tidak ada jenis jin bernomor "{jin}"!')
+            print(f'\nTidak ada jenis jin bernomor "{jin}"!\n')
     return array_of_user
 
 def isUsernameExist(username : str, array_of_user : list) -> bool: 

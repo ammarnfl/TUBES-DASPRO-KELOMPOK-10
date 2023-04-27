@@ -6,6 +6,7 @@ def Help(role : str) -> str:
         print("untuk masuk menggunakan akun")
         print("2. exit")
         print("untuk keluar dari program dan kembali ke terminal")
+        print(" ")
     elif Login_status() == True:
         if role == "bandung_bondowoso":
             print("\n=========== HELP ===========\n")
@@ -25,6 +26,7 @@ def Help(role : str) -> str:
             print("untuk mengetahui kinerja jin")
             print("8. laporancandi")
             print("untuk mengetahui progress pembangunan candi")
+            print(" ")
         elif role == "roro_jonggrang":
             print("\n=========== HELP ===========\n")
             print("1. logout")
@@ -32,16 +34,19 @@ def Help(role : str) -> str:
             print("2. hancurkancandi")
             print("untuk menghancurkan candi yang telah dibangun oleh jin")
             print("3. ayamberkokok")
-            print("menyelesaikan permainan")
+            print("untuk menyelesaikan permainan")
+            print(" ")
         elif role == "jin_pembangun":
             print("=========== HELP ===========")
             print("1. logout")
             print("untuk keluar dari akun yang digunakan sekarang")
             print("2. bangun")
-            print("membangun candi")
+            print("untuk membangun candi")
+            print(" ")
         elif role == "jin_pengumpul":
             print("\n=========== HELP ===========\n")
             print("1. logout")
             print("untuk keluar dari akun yang digunakan sekarang")
             print("2. kumpul")
             print("untuk mengumpulkan bahan")
+            print(" ")

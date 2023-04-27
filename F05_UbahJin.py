@@ -1,9 +1,8 @@
-
 from Z1_ListFunction import *
 
 def ubah_jin(array_of_user : list) -> list:
     isUsernameExist = False
-    username = input("Masukkkan username Jin: ")
+    username = input("Masukkkan username jin: ")
     #check username ada atau tidak 
     i = 0 
     while array_of_user[i] != Mark: 
@@ -27,16 +26,16 @@ def ubah_jin(array_of_user : list) -> list:
             tipe = "Pengumpul"
             tipe_opposite = "Pembangun"
         #menentukan tipe jin diubah atau tidak
-        choice = input(f'Jin ini bertipe "{tipe}". Apakah yakin ingin mengubah ke tipe "{tipe_opposite}" (Y/N)? ')
+        choice = input(f'\nJin ini bertipe "{tipe}". Apakah yakin ingin mengubah ke tipe "{tipe_opposite}" (Y/N)?\n')
         #mengubah role dari jin_pembangun ke jin_pengumpul
         if (choice == 'Y' or choice == 'y') and tipe == "Pembangun" and role != "": 
             role = "jin_pengumpul"
-            print(f'Berhasil ubah {username} ke tipe {tipe_opposite} ')
+            print(f'\nBerhasil ubah jin {username} ke tipe "{tipe_opposite}"\n')
         #mengubah role dari jin_pengumpul ke jin_pengumpul
         if (choice == 'Y' or choice == 'y') and tipe == "Pengumpul" and role != "":
             role = "jin_pembangun"
-            print(f'Berhasil ubah {username} ke tipe {tipe_opposite} ')
+            print(f'\nBerhasil ubah jin {username} ke tipe "{tipe_opposite}"\n')
         array_of_user [i][2] = role
     else: 
-        print(f'Tidak ada jin dengan username "{username}"')
+        print(f'\nTidak ada jin dengan username "{username}"\n')
     return array_of_user

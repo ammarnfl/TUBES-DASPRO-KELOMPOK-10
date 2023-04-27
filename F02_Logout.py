@@ -3,7 +3,7 @@ from F01_Login import *
 
 def Logout(status_login : bool) -> list: 
     if status_login == True:
-        print("Berhasil logout dari akun")
+        print("\nBerhasil logout dari akun\n")
         return ""
     else:
         print("Logout gagal!")
