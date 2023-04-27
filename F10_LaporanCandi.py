@@ -7,9 +7,10 @@ hargaAir = 7500
 def LaporanCandi(array_of_candi: list) -> str:
     
     Total_candi = 0 
-    for i in range(Len(array_of_candi)): 
+    for i in range(1, Len(array_of_candi)): 
         if Len(array_of_candi[i]) != 1: 
             Total_candi += 1
+    
     Total_pasir = 0
     Total_batu = 0
     Total_air = 0
