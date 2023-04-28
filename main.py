@@ -196,7 +196,9 @@ elif(os.path.isdir(args.nama_folder) == True):
             save(folder, bahan_bangunan, 'bahan_bangunan.csv')
             print(f"Menyimpan folder di {folder}...\n")
         #fungsi exit
-
+        elif masukkan == "exit": 
+            Exit(users, candi, bahan_bangunan)
+       
         else: 
             print('\nInput tidak sesuai\nKetik "help" untuk tahu command yang bisa digunakan\n')
 
