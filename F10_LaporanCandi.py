@@ -6,7 +6,14 @@ hargaAir = 7500
 
 def LaporanCandi(array_of_candi: list) -> str:
     
+<<<<<<< HEAD
     Total_candi = Len(array_of_candi) - 1
+=======
+    Total_candi = 0 
+    for i in range(Len(array_of_candi)): 
+        if Len(array_of_candi[i]) != 1: 
+            Total_candi += 1
+>>>>>>> parent of 0e1a7e4 (fix laporancandi)
     Total_pasir = 0
     Total_batu = 0
     Total_air = 0
