@@ -27,22 +27,27 @@ def ubah_jin(array_of_user : list) -> list:
             tipe = "Pengumpul"
             tipe_opposite = "Pembangun"
         #menentukan tipe jin diubah atau tidak
-        choice = input(f'\nJin ini bertipe "{tipe}". Apakah yakin ingin mengubah ke tipe "{tipe_opposite}" (Y/N)?\n')
-        while choice != ('y', 'n', 'Y', 'N'):
+        choice = input(f'\nJin ini bertipe "{tipe}". Apakah yakin ingin mengubah ke tipe "{tipe_opposite}" (Y/N)? ')
+ 
+        while True:
         #mengubah role dari jin_pembangun ke jin_pengumpul
             if choice == 'Y' or choice == 'y' and tipe == "Pembangun" and role != "": 
                 role = "jin_pengumpul"
                 print(f'\nBerhasil ubah jin {username} ke tipe "{tipe_opposite}"\n')
+                break
             elif choice == 'N' or choice == 'n': 
                 print("Yah, gagal ubah jin")
+                break
             #mengubah role dari jin_pengumpul ke jin_pengumpul
             if choice == 'Y'or choice == 'y' and tipe == "Pengumpul" and role != "":
                 role = "jin_pembangun"
                 print(f'\nBerhasil ubah jin {username} ke tipe "{tipe_opposite}"\n')
+                break
             elif choice == 'N' or choice == 'n': 
                 print("Yah, gagal ubah jin")
+                break
             print("Input tidak valid")
-            choice = input(f'\nJin ini bertipe "{tipe}". Apakah yakin ingin mengubah ke tipe "{tipe_opposite}" (Y/N)?\n')
+            choice = input(f'\nJin ini bertipe "{tipe}". Apakah yakin ingin mengubah ke tipe "{tipe_opposite}" (Y/N)? ')
         array_of_user [i][2] = role
     else: 
         print(f'\nTidak ada jin dengan username "{username}"\n')
