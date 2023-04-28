@@ -5,15 +5,11 @@ hargaBatu = 15000
 hargaAir = 7500
 
 def LaporanCandi(array_of_candi: list) -> str:
-    
-<<<<<<< HEAD
-    Total_candi = Len(array_of_candi) - 1
-=======
     Total_candi = 0 
-    for i in range(Len(array_of_candi)): 
+    for i in range(1, Len(array_of_candi)): 
         if Len(array_of_candi[i]) != 1: 
             Total_candi += 1
->>>>>>> parent of 0e1a7e4 (fix laporancandi)
+
     Total_pasir = 0
     Total_batu = 0
     Total_air = 0
@@ -21,30 +17,33 @@ def LaporanCandi(array_of_candi: list) -> str:
     ID_Candi_termahal = '-'
     MaksHargaCandi = 0
     MinsHargaCandi = 0
+
     if Total_candi >= 1: 
         Array_material_candi = [None for i in range(Total_candi + 1)]
         Array_material_candi[0] = Mark
         i = 1
         #mencari total pasir, total batu, total air, assign material ke dalam array 
-        while array_of_candi[i] != Mark: 
-            pasir = array_of_candi[i][2]
-            batu = array_of_candi[i][3]
-            air = array_of_candi[i][4]
-            Total_pasir += int(pasir)
-            Total_batu += int(batu)
-            Total_air += int(air)
-            Array_material_candi = Appends(Array_material_candi, [pasir, batu, air, Mark])
+        while array_of_candi[i] != Mark:
+            if Len(array_of_candi[i]) != 1:
+                pasir = array_of_candi[i][2]
+                batu = array_of_candi[i][3]
+                air = array_of_candi[i][4]
+                Total_pasir += int(pasir)
+                Total_batu += int(batu)
+                Total_air += int(air)
+                Array_material_candi = Appends(Array_material_candi, [pasir, batu, air, Mark])
             i += 1
         j = 0
         #memasukkan harga masing-masing candi ke dalam sebuah array
         Array_of_hargaCandi = [None for i in range(Total_candi + 1)]
         Array_of_hargaCandi[0] = Mark
         while Array_material_candi[j] != Mark: 
-            pasirCandi = int(Array_material_candi[j][0])
-            batuCandi = int(Array_material_candi[j][1])
-            airCandi = int(Array_material_candi[j][2])
-            hargaCandi = hargaPasir * pasirCandi + hargaBatu * batuCandi + airCandi *  hargaAir
-            Array_of_hargaCandi = Appends(Array_of_hargaCandi, hargaCandi) 
+            if Len(array_of_candi[j]) != 1:
+                pasirCandi = int(Array_material_candi[j][0])
+                batuCandi = int(Array_material_candi[j][1])
+                airCandi = int(Array_material_candi[j][2])
+                hargaCandi = hargaPasir * pasirCandi + hargaBatu * batuCandi + airCandi *  hargaAir
+                Array_of_hargaCandi = Appends(Array_of_hargaCandi, hargaCandi) 
             j += 1
         #mencari nilai maks dan min dari sebuah candi
         MaksHargaCandi = Array_of_hargaCandi[0]

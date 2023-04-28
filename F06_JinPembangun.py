@@ -43,11 +43,11 @@ def Jin_Pembangun(array_of_candi : list, array_of_material : list, jin_pembangun
                 count_candi += 1
         
         if count_candi == 101: 
-            print("Candi berhasil dibangun")
-            print(f"Sisa candi yang perlu dibangun: {101-count_candi}\n")
+            print("\nCandi berhasil dibangun!")
+            print(f"Sisa candi yang perlu dibangun: {0}\n")
         else: 
-            print("Candi berhasil dibangun")
-            print(f"Sisa candi yang perlu dibangun: {101-count_candi}\n")
+            print("\nCandi berhasil dibangun")
+            print(f"Sisa candi yang perlu dibangun: {100-count_candi}\n")
             j = 0
             status_bangun = False
             while Marking(array_of_candi[j]) == False:
@@ -64,7 +64,6 @@ def Jin_Pembangun(array_of_candi : list, array_of_material : list, jin_pembangun
                     candi = [str(count_candi), jin_pembangun, str(pasir), str(batu), str(air), Mark]
                     Appends(array_of_candi, candi)
     else: 
-
-        print("Bahan bangunan tidak mencukupi")
+        print("\nBahan bangunan tidak mencukupi!")
         print("Candi tidak bisa dibangun!\n")
     return array_of_candi, array_of_material

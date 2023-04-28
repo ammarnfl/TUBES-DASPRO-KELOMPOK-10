@@ -11,9 +11,10 @@ def HancurkanCandi(array_of_candi : list, id_candi : str) -> str:
         i += 1
 
     if isIDexist == True: 
-        choice = input(f"Apakah anda yakin ingin menghancurkan\n candi ID: {id_candi} (Y/N) ")
+        choice = input(f"\nApakah anda yakin ingin menghancurkan candi dengan nomor ID {id_candi} (Y/N)?")
         if choice == 'Y' or choice == 'y': 
             array_of_candi[int(id_candi)] = ['', Mark]
+            print(f"Candi dengan nomor ID {id_candi} berhasil dihancurkan!\n")
         elif choice == 'N' or choice == 'n': 
             pass
     else: 

@@ -30,7 +30,7 @@ def Login(username : str, password : str, array_of_user : list) -> str:
         #password benar masuk sini
         else: 
             print(f"\nSelamat datang, {username}!")
-            print('Masukkan command "help" untuk daftar command yang dapat kamu panggil')
+            print('Masukkan command "help" untuk daftar command yang dapat kamu panggil\n')
             return role
         
 # memberikan nilai login_status dalam boolean 

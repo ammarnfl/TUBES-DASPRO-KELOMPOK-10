@@ -37,7 +37,7 @@ args = parser.parse_args()
 
 if args.nama_folder == None: 
     print("\nTidak ada nama folder yang diberikan!\n")
-    print("Usage: python main.py <nama_folder>")
+    print("Usage: python main.py <nama_folder>\n")
     exit()
 elif(os.path.isdir(args.nama_folder) == True): 
     #load semua file csv ke dalam array 
@@ -49,7 +49,7 @@ elif(os.path.isdir(args.nama_folder) == True):
     print("\nLoading...\n")
     print("\n=========== WELCOME ===========\n\n")
     print('Selamat datang di program "Manajerial candi"')
-    print('Masukkan command "help" untuk bantuan sintaks!')
+    print('Masukkan command "help" untuk bantuan sintaks!\n')
 
     #=============================================================================#
     #============================Program Utama====================================#
@@ -59,8 +59,9 @@ elif(os.path.isdir(args.nama_folder) == True):
         #fungsi login 
         if masukkan == "login": 
             if role != "": 
-                print(f'Login gagal!\nAnda telah melakukan login dengan username {Username}, silahkan lakukan "logout" sebelum melakukan login kembali')
+                print(f'\nLogin gagal!\nAnda telah melakukan login dengan username "{Username}", silahkan lakukan "logout" sebelum melakukan login kembali\n')
             while role == "":
+                print(" ")
                 Username = input("Username: ")
                 Password = input("Password: ")
                 role = Login(Username, Password, users)
@@ -71,82 +72,115 @@ elif(os.path.isdir(args.nama_folder) == True):
                 status_login = Login_status()
                 role = Logout(status_login)
             else: 
-                print("\nLogout gagal!\nAnda belum login, silahkan login terlebih dahulu sebelum melakukan logout") 
+                print("\nLogout gagal!")
+                print("Anda belum login, silahkan login terlebih dahulu sebelum melakukan logout!!\n") 
 
         #fungsi summonjin
-        elif role == "bandung_bondowoso" and masukkan == "summonjin": 
-            totalJin = summoned_jin(users)
-            print(f'Jumlah jin saat ini: {totalJin}')
-            if totalJin < 100: 
-                print(f"Tersisa {100-totalJin} jin yang bisa dipanggil")
-                Summonjin(users)
-            else: 
-                print("Jumlah Jin telah maksimal! (100 jin)\nBandung tidak dapat men-summon lebih dari itu")
+        elif masukkan == "summonjin": 
+            if role == "bandung_bondowoso":
+                totalJin = summoned_jin(users)
+                print(f'\nJumlah jin saat ini: {totalJin}')
+                if totalJin < 100: 
+                    print(f"Tersisa {100-totalJin} jin yang bisa dipanggil")
+                    Summonjin(users)
+                else: 
+                    print("\nJumlah Jin telah maksimal! (100 jin)\nBandung tidak dapat men-summon lebih dari itu\n")
+            else:
+                print('\nMaaf, perintah "summonjin" hanya bisa dilakukan apabila telah login menggunakan akun "Bandung Bondowoso"\n')
 
         #fungsi hapus jin
-        elif role == "bandung_bondowoso" and masukkan == "hapusjin": 
-            username_jin = input("Masukkan username jin: ")
-            users = HapusJin(users, username_jin)
-            candi = HapusJinCandi(candi, username_jin)
+        elif masukkan == "hapusjin":
+            if role == "bandung_bondowoso":
+                username_jin = input("\nMasukkan username jin: ")
+                users = HapusJin(users, username_jin)
+                candi = HapusJinCandi(candi, username_jin)
+            else: 
+                print('\nMaaf, perintah "hapusjin" hanya bisa dilakukan apabila telah login menggunakan akun "Bandung Bondowoso"\n')
 
-        #fungsi ubah tipe jin
-        elif role == "bandung_bondowoso" and masukkan == "ubahjin": 
-            ubah_jin(users)
+        elif masukkan == "ubahjin":
+            if role == "bandung_bondowoso":
+                ubah_jin(users)
+            else: 
+                print('\nMaaf, perintah "ubahjin" hanya bisa dilakukan apabila telah login menggunakan akun "Bandung Bondowoso"\n')
 
         #fungsi bangun
-        elif role == "jin_pembangun" and masukkan == "bangun": 
-            (candi, bahan_bangunan) = Jin_Pembangun(candi, bahan_bangunan, Username)
+        elif  masukkan == "bangun": 
+            if role == "jin_pembangun": 
+                (candi, bahan_bangunan) = Jin_Pembangun(candi, bahan_bangunan, Username)
+            else: 
+                print('\nMaaf, perintah "bangun" hanya bisa dilakukan apabila telah login menggunakan akun "Jin Pembangun"\n')
 
         #fungsi kumpul
-        elif role == "jin_pengumpul" and masukkan == "kumpul":
-            (bahan_bangunan, pasir, batu, air) = CollectMaterial(bahan_bangunan)
-            print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
-
+        elif masukkan == "kumpul": 
+            if role == "jin_pengumpul":
+                (bahan_bangunan, pasir, batu, air) = CollectMaterial(bahan_bangunan)
+                print(f"\nJin menemukan {pasir} pasir, {batu} batu, dan {air} air\n")
+            else: 
+                print('\nMaaf, perintah "kumpul" hanya bisa dilakukan apabila telah login menggunakan akun "Jin Pengumpul"\n')
         #fungsi batchkumpul
-        elif role == "bandung_bondowoso" and masukkan == "batchkumpul":  
-            (bahan_bangunan, jumlah_jin_pengumpul, pasir, batu, air) = Batch_kumpul(users, bahan_bangunan)
-            if jumlah_jin_pengumpul == 0: 
-                print("Kumpul gagal. Anda tidak memiliki jin pengumpul, summonjin pengumpul terlebih dahulu")
+
+        elif masukkan == "batchkumpul":  
+            if role == "bandung_bondowoso": 
+                (bahan_bangunan, jumlah_jin_pengumpul, pasir, batu, air) = Batch_kumpul(users, bahan_bangunan)
+                if jumlah_jin_pengumpul == 0: 
+                    print('\nGagal mengumpulkan bahan. Anda tidak memiliki jin pengumpul.\nSilahkan masukkan perintah "summonjin" terlebih dahulu untuk memanggil jin "Pengumpul"\n')
+                else: 
+                    print(f"\nMengerahkan {jumlah_jin_pengumpul} jin pengumpul untuk mengumpulkan bahan")
+                    print(f"\nJin menemukan {pasir} pasir, {batu} batu, dan {air} air\n")
             else: 
-                print(f"Mengerahkan {jumlah_jin_pengumpul} untuk mengumpulkan bahan ")
-                print(f"Jin menemukan {pasir} pasir {batu} batu {air} air")
+                print('\nMaaf, perintah "batchkumpul" hanya bisa dilakukan apabila telah login menggunakan akun "Bandung Bondowoso"\n')
         #fungsi batchbangun
-        elif role == "bandung_bondowoso" and masukkan == "batchbangun": 
-            (bahan_bangunan, candi, jumlah_jin, pasir, batu, air, status_bangun, isCandiOver) = Batch_bangun(users, candi, bahan_bangunan)
-            if jumlah_jin == 0: 
-                print("Bangun gagal. Anda tidak punya jin pembangun. Silahkan summon terlebih dahulu.")
-            else: 
-                if status_bangun == True: 
-                    if isCandiOver == True: 
-                        print("Bangun berhasil")
-                    else: 
-                        print(f"Mengerahkan {jumlah_jin} jin untuk membangun candi dengan total bahan {pasir} pasir, {batu} batu, {air} air")
-                else:
-                    if isCandiOver == True: 
-                        print("Bangun gagal")
+        elif masukkan == "batchbangun": 
+            if role == "bandung_bondowoso": 
+                (bahan_bangunan, candi, jumlah_jin, pasir, batu, air, status_bangun, isCandiOver) = Batch_bangun(users, candi, bahan_bangunan)
+                if jumlah_jin == 0: 
+                    print("\nBangun gagal. Anda tidak punya jin pembangun. Silahkan summon jin terlebih dahulu!\n")
+                else: 
+                    if status_bangun == True: 
+                        if isCandiOver == True: 
+                            print("\nMisi berhasil!! 100 candi berhasil dibangun!!\n")
+                        else: 
+                            print(f"\nMengerahkan {jumlah_jin} jin pembangun untuk membangun candi dengan total bahan {pasir} pasir, {batu} batu, dan {air} air")
+                            print(f'\n{jumlah_jin} candi berhasil dibangun!\n')
                     else:
-                        print(f"Bangun gagal. Kurang {pasir} pasir, {batu} batu, {air} air ") 
+                        if isCandiOver == True: 
+                            print("\nBangun gagal\n")
+                        else:
+                            print(f"\nBangun gagal! Kurang {pasir} pasir, {batu} batu, dan {air} air ")
+                            print('\nSilahkan masukkan perintah "batchkumpul" untuk mengumpulkan bahan\n')
+            else: 
+                print('\nMaaf, perintah "batchbangun" hanya bisa dilakukan apabila telah login menggunakan akun "Bandung Bondowoso"\n')
               
         #fungsi laporan jin 
-        elif role == "bandung_bondowoso" and masukkan == "laporanjin": 
-            jumlahJin, jumlahJinPembangun, jumlahJinPengumpul, pasir, batu, air, jinMalas, jinRajin = LaporanJin(users, bahan_bangunan, candi)
-            print_laporan_jin(jumlahJin, jumlahJinPembangun, jumlahJinPengumpul, pasir, batu, air, jinMalas, jinRajin)
-
+        elif masukkan == "laporanjin": 
+            if role == "bandung_bondowoso":
+                jumlahJin, jumlahJinPembangun, jumlahJinPengumpul, pasir, batu, air, jinMalas, jinRajin = LaporanJin(users, bahan_bangunan, candi)
+                print_laporan_jin(jumlahJin, jumlahJinPembangun, jumlahJinPengumpul, pasir, batu, air, jinMalas, jinRajin)
+            else: 
+                print('\nMaaf, perintah "laporanjin" hanya bisa dilakukan apabila telah login menggunakan akun "Bandung Bondowoso"\n')
 
         #fungsi laporan candi
-        elif role == "bandung_bondowoso" and masukkan == "laporancandi": 
-            totalCandi, totalPasir, totalBatu, totalAir, candiTermahal, candiTermurah, HargaTermahal, HargaTermurah  = LaporanCandi(candi)
-            print_laporan_candi(totalCandi, totalPasir, totalBatu, totalAir, candiTermahal, HargaTermahal, candiTermurah, HargaTermurah )
-                
+        elif masukkan == "laporancandi": 
+            if role == "bandung_bondowoso":
+                totalCandi, totalPasir, totalBatu, totalAir, candiTermahal, candiTermurah, HargaTermahal, HargaTermurah  = LaporanCandi(candi)
+                print_laporan_candi(totalCandi, totalPasir, totalBatu, totalAir, candiTermahal, HargaTermahal, candiTermurah, HargaTermurah )
+            else: 
+                print('\nMaaf, perintah "laporancandi" hanya bisa dilakukan apabila telah login menggunakan akun "Bandung Bondowoso"\n')   
         #fungsi Roro Jonggrang
         #fungsi hancurkancandi
-        elif role == "roro_jonggrang" and masukkan == "hancurkancandi":
-            id_candi = input("Masukkan ID candi: ")
-            candi = HancurkanCandi(candi, id_candi)
+        elif masukkan == "hancurkancandi":
+            if role == "roro_jonggrang":
+                id_candi = input("\nMasukkan ID candi: ")
+                candi = HancurkanCandi(candi, id_candi)
+            else:
+                print('\nMaaf, perintah "hancurkancandi" hanya bisa dilakukan apabila telah login menggunakan akun "Roro Jonggrang"\n')
         
         #fungsi ayamberkokok
-        elif role == "roro_jonggrang" and masukkan == "ayamberkokok": 
-            AyamBerkokok(candi)
+        elif masukkan == "ayamberkokok": 
+            if role == "roro_jonggrang":
+                AyamBerkokok(candi)
+            else: 
+              print('\nMaaf, perintah "ayamberkokok" hanya bisa dilakukan apabila telah login menggunakan akun "Roro Jonggrang"\n')  
     
         elif masukkan == "help": 
             Help(role)
@@ -154,13 +188,13 @@ elif(os.path.isdir(args.nama_folder) == True):
         #fungsi Save
         elif masukkan == "save": 
             parent = "data"
-            folderpath = input("Masukkan nama folder: ")
+            folderpath = input("\nMasukkan nama folder: ")
             print("\nSaving...\n")
             folder = parent + "/" + folderpath
             save(folder, users, 'user.csv')
             save(folder, candi, 'candi.csv')
             save(folder, bahan_bangunan, 'bahan_bangunan.csv')
-            print(f"Menyimpan folder di {folder}...")
+            print(f"Menyimpan folder di {folder}...\n")
         #fungsi exit
         elif masukkan == "exit": 
             Exit(users, candi, bahan_bangunan)
@@ -178,7 +212,7 @@ elif(os.path.isdir(args.nama_folder) == True):
                     count_candi += 1
             print(count_candi)
         else: 
-            print('Input tidak sesuai\nKetik "help" untuk tahu command yang bisa digunakan')
+            print('\nInput tidak sesuai\nKetik "help" untuk tahu command yang bisa digunakan\n')
 
 elif(os.path.isdir(args.nama_folder) == False):
     print(f'\nFolder "{args.nama_folder}" tidak ditemukan.') 
