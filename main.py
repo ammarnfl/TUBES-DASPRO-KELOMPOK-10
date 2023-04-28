@@ -196,21 +196,7 @@ elif(os.path.isdir(args.nama_folder) == True):
             save(folder, bahan_bangunan, 'bahan_bangunan.csv')
             print(f"Menyimpan folder di {folder}...\n")
         #fungsi exit
-        elif masukkan == "exit": 
-            Exit(users, candi, bahan_bangunan)
-        #buat debugging
-        elif masukkan == "user": 
-            print(array_eff_None(users))
-        elif masukkan == "bahan": 
-            print(array_eff_None(bahan_bangunan))
-        elif masukkan == "candi":
-            print(array_eff_None(candi))
-        elif masukkan == "jumlahcandi": 
-            count_candi = 0
-            for i in range(1, Len(candi)): 
-                if Len(candi[i]) != 1: 
-                    count_candi += 1
-            print(count_candi)
+
         else: 
             print('\nInput tidak sesuai\nKetik "help" untuk tahu command yang bisa digunakan\n')
 
