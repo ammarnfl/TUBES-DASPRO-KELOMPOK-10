@@ -190,7 +190,7 @@ elif(os.path.isdir(args.nama_folder) == True):
             parent = "data"
             folderpath = input("\nMasukkan nama folder: ")
             print("\nSaving...\n")
-            folder = parent + "/" + folderpath
+            folder = parent + "\\" + folderpath
             save(folder, users, 'user.csv')
             save(folder, candi, 'candi.csv')
             save(folder, bahan_bangunan, 'bahan_bangunan.csv')

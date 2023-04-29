@@ -11,7 +11,7 @@ def Exit(array_of_user : list, array_of_candi :list , array_of_material : list):
         elif simpan == 'y' or simpan == 'Y':
             parent = "data"
             folderpath = input("Masukkan nama folder: ")
-            folder = parent + "/" + folderpath
+            folder = parent + "\\" + folderpath
             print("\nSaving...\n")
             save(folder, array_of_user, 'user.csv')
             save(folder, array_of_candi, 'candi.csv')
