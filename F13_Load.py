@@ -9,5 +9,5 @@ def load(path : str, filename : str, array : list) -> list:
     for line in f: 
         arr += line
     f.close()
-    array = matriks_csv2(array, arr) 
+    array = matriks_csv(array, arr) 
     return array

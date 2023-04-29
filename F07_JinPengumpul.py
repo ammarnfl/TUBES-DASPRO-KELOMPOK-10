@@ -9,10 +9,12 @@ def CollectMaterial(array_of_material : list) -> list:
     array_pasir = ['pasir', 'PerluNih!', str(pasir), Mark]
     array_batu = ['batu', 'KerasCuy', str(batu), Mark]
     array_air = ['air', 'Enak nih diminum', str(air), Mark]
+    #jika csv blm memiliki data sama sekali 
     if Len(array_of_material) == 1: 
         array_of_material = Appends(array_of_material, array_pasir)
         array_of_material = Appends(array_of_material, array_batu)
         array_of_material = Appends(array_of_material, array_air)
+    #jika csv sudah memiliki data
     else: 
         i = 0
         while Marking(array_of_material[i]) != True: 

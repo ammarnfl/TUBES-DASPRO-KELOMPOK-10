@@ -1,5 +1,6 @@
 from F01_Login import *
 def Help(role : str) -> str:
+    #akun belum login sama sekali
     if role == "":
         print("\n=========== HELP ===========\n")
         print("1. login")
@@ -7,7 +8,9 @@ def Help(role : str) -> str:
         print("2. exit")
         print("untuk keluar dari program dan kembali ke terminal")
         print(" ")
+    #akun yang sudah login
     elif Login_status() == True:
+        #akun bandung bondowoso
         if role == "bandung_bondowoso":
             print("\n=========== HELP ===========\n")
             print("1. logout")
@@ -31,6 +34,7 @@ def Help(role : str) -> str:
             print("10. exit")
             print("untuk keluar dari program")
             print(" ")
+        #akun Roro Jonggrang
         elif role == "roro_jonggrang":
             print("\n=========== HELP ===========\n")
             print("1. logout")
@@ -44,6 +48,7 @@ def Help(role : str) -> str:
             print("5. exit")
             print("untuk keluar dari program")
             print(" ")
+        #akun jin pembangun
         elif role == "jin_pembangun":
             print("\n=========== HELP ===========\n")
             print("1. logout")
@@ -55,6 +60,7 @@ def Help(role : str) -> str:
             print("4. exit")
             print("untuk keluar dari program")
             print(" ")
+        #akun jin pengumpul
         elif role == "jin_pengumpul":
             print("\n=========== HELP ===========\n")
             print("1. logout")

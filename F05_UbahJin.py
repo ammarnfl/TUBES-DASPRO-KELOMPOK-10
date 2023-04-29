@@ -49,6 +49,7 @@ def ubah_jin(array_of_user : list) -> list:
             print("Input tidak valid")
             choice = input(f'\nJin ini bertipe "{tipe}". Apakah yakin ingin mengubah ke tipe "{tipe_opposite}" (Y/N)? ')
         array_of_user [i][2] = role
+    #jika tidak ada jin dengan username tersebut 
     else: 
         print(f'\nTidak ada jin dengan username "{username}"\n')
     return array_of_user

@@ -45,5 +45,5 @@ def HapusJinCandi(array_of_candi : list, username_jin : str) -> list:
                 i = 0
             i += 1
             array_of_candi[0][0] = 'id'
-
+    #mereturn array_of_candi
     return array_of_candi

@@ -56,7 +56,6 @@ def Jin_Pembangun(array_of_candi : list, array_of_material : list, jin_pembangun
                     status_bangun = True
                     break
                 j += 1
-            
             if status_bangun == False:
                 if Len(array_of_candi) == 1: 
                     candi = [str(count_candi), jin_pembangun, str(pasir), str(batu), str(air), Mark]

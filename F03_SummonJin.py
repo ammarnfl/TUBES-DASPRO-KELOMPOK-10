@@ -55,6 +55,7 @@ def Summonjin(array_of_user : list) -> list:
             print(f'Tidak ada jenis jin bernomor "{jin}"!')
     return array_of_user
 
+#check apakah username ada
 def isUsernameExist(username : str, array_of_user : list) -> bool: 
     i = 0
     while array_of_user[i] != Mark: 
@@ -62,12 +63,12 @@ def isUsernameExist(username : str, array_of_user : list) -> bool:
             return True
         i += 1
     return False
-
+#check panjangnya password dari input
 def check_password(password : str) -> bool: 
     if len(password) >= 5 and len(password) <= 25: 
         return True
     return False
-
+#check berapa banyak jin yang sudah tersummon
 def summoned_jin(arr : list) -> int: 
     countjin = 0
     for i in range(Len(arr)): 

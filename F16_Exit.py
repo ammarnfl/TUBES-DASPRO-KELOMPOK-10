@@ -2,7 +2,7 @@ from F14_Save import *
 from Z1_ListFunction import *
 
 def Exit(array_of_user : list, array_of_candi :list , array_of_material : list):
-    simpan = input("\nApakah Anda mau melakukan penyimpanan file yang sudah diubah (Y/N)?\n")
+    simpan = input("\nApakah Anda mau melakukan penyimpanan file yang sudah diubah (Y/N)? ")
 
     while True: 
         if simpan == 'n' or simpan == 'N':
@@ -20,4 +20,4 @@ def Exit(array_of_user : list, array_of_candi :list , array_of_material : list):
             print("Keluar dari program...\n")
             exit()
         print("Input tidak sesuai")
-        simpan = input("\nApakah Anda mau melakukan penyimpanan file yang sudah diubah (Y/N)?\n")
+        simpan = input("\nApakah Anda mau melakukan penyimpanan file yang sudah diubah (Y/N)? ")
